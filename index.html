@@ -16,7 +16,7 @@ body {
     background: linear-gradient(135deg, #fef9f3 0%, #fff5eb 50%, #ffe8d6 100%);
     display: flex;
     flex-direction: column;
-    padding: 12px 20px;
+    padding: 10px 15px;
     position: relative;
 }
 
@@ -36,7 +36,7 @@ body {
 
 .header {
     text-align: center;
-    padding: 5px 0 10px;
+    padding: 5px 0 8px;
     flex-shrink: 0;
     position: relative;
 }
@@ -54,7 +54,7 @@ body {
 
 .header h1 {
     font-family: 'Caveat', cursive;
-    font-size: 3.5em;
+    font-size: 3em;
     color: #3d2817;
     font-weight: 700;
     position: relative;
@@ -114,7 +114,7 @@ body {
     display: flex;
     gap: 10px;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     flex-shrink: 0;
 }
 
@@ -137,19 +137,19 @@ body {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
     min-height: 0;
     overflow: hidden;
 }
 
 .card {
-    border-radius: 20px;
-    padding: 15px;
+    border-radius: 18px;
+    padding: 12px;
     cursor: pointer;
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 8px;
     transition: all 0.3s ease;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
@@ -157,14 +157,14 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     z-index: 10;
 }
 
 .card.playing {
     animation: pulse 0.5s ease;
-    box-shadow: 0 0 0 3px rgba(255,182,193,0.4), 0 8px 25px rgba(0,0,0,0.12);
+    box-shadow: 0 0 0 3px rgba(255,182,193,0.4), 0 8px 20px rgba(0,0,0,0.12);
 }
 
 @keyframes pulse {
@@ -172,63 +172,60 @@ body {
     50% { transform: scale(1.03); }
 }
 
-/* Текстовый блок слева */
 .text-block {
     flex: 1;
-    z-index: 2;
-    padding-right: 10px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .number {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 1em;
+    font-size: 0.95em;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .chinese {
-    font-size: 2.2em;
+    font-size: 1.9em;
     font-weight: 900;
     color: #2d2d2d;
-    line-height: 1.1;
-    margin-bottom: 4px;
+    line-height: 1;
 }
 
 .pinyin {
-    font-size: 0.85em;
+    font-size: 0.75em;
     color: #666;
     font-weight: 600;
-    margin-bottom: 4px;
+    line-height: 1.2;
 }
 
 .russian {
-    font-size: 0.95em;
+    font-size: 0.85em;
     font-weight: 800;
+    line-height: 1.2;
 }
 
-/* Картинка справа - НЕ прозрачная */
 .card-img {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
-    z-index: 1;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
 
 .card:hover .card-img {
-    transform: scale(1.1) rotate(2deg);
+    transform: scale(1.08);
 }
 
-/* Цвета для кружков и текста */
 .c1 .number { background: #66bb6a; }
 .c1 .russian { color: #2e7d32; }
 
@@ -316,6 +313,13 @@ body {
     flex-shrink: 0;
     opacity: 0.7;
 }
+
+@media (max-height: 700px) {
+    .header h1 { font-size: 2.5em; }
+    .chinese { font-size: 1.6em; }
+    .card-img { width: 75px; height: 75px; }
+    .card { padding: 10px; }
+}
 </style>
 </head>
 <body>
@@ -332,7 +336,7 @@ body {
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇳 Китайские</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
@@ -344,26 +348,26 @@ body {
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
-<div class="footer-decor">  </div>
+<div class="footer-decor">🌸 </div>
 
 <script>
 const words = [
-    { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7181.png' },
-    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7182.png' },
-    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7183.png' },
-    { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7184.png' },
-    { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7185.png' },
-    { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7186.png' },
-    { cn:'热闹', py:'rè nao', ru:'оживлённый', c:'c7', img:'IMG_7187.png' },
-    { cn:'安静', py:'ān jìng', ru:'тихий', c:'c8', img:'IMG_7188.png' },
-    { cn:'便宜', py:'pián yi', ru:'дешёвый', c:'c9', img:'IMG_7189.png' },
-    { cn:'昂贵', py:'áng guì', ru:'дорогой', c:'c10', img:'IMG_7190.png' },
-    { cn:'成功', py:'chéng gōng', ru:'успех', c:'c11', img:'IMG_7191.png' },
-    { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7192.png' },
-    { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7193.png' },
-    { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7194.png' },
-    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7195.png' },
-    { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7180.png' }
+    { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
+    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
+    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
+    { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
+    { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
+    { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7184.png' },
+    { cn:'热闹', py:'rè nao', ru:'оживлённый', c:'c7', img:'IMG_7185.png' },
+    { cn:'安静', py:'ān jìng', ru:'тихий', c:'c8', img:'IMG_7186.png' },
+    { cn:'便宜', py:'pián yi', ru:'дешёвый', c:'c9', img:'IMG_7187.png' },
+    { cn:'昂贵', py:'áng guì', ru:'дорогой', c:'c10', img:'IMG_7188.png' },
+    { cn:'成功', py:'chéng gōng', ru:'успех', c:'c11', img:'IMG_7189.png' },
+    { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7190.png' },
+    { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7191.png' },
+    { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7192.png' },
+    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7193.png' },
+    { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
 const imgPath = './img/';
