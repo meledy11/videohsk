@@ -5,17 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mia's Mandarin - Sailor Moon Edition 🌙</title>
 <style>
-/* Основные настройки страницы */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Segoe UI', 'Noto Sans SC', sans-serif;
-    height: 100vh; /* На всю высоту экрана */
-    overflow: hidden; /* Без скролла */
+    height: 100vh;
+    overflow: hidden; /* Строго без скролла */
     background: linear-gradient(180deg, #fef9f3 0%, #fff5eb 50%, #ffe8d6 100%);
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 12px 20px;
 }
 
 /* Шапка */
@@ -27,9 +26,9 @@ body {
 }
 
 .header h1 {
-    font-size: 1.8em;
+    font-size: 1.9em;
     color: #5a3e2b;
-    font-weight: 800;
+    font-weight: 900;
     text-shadow: 2px 2px 0 rgba(255, 214, 165, 0.8);
 }
 
@@ -44,15 +43,15 @@ body {
     top: 0;
     right: 0;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    padding: 4px 12px;
-    border-radius: 15px;
+    padding: 5px 14px;
+    border-radius: 20px;
     color: white;
     font-weight: bold;
-    font-size: 0.8em;
-    box-shadow: 0 2px 5px rgba(255, 154, 158, 0.4);
+    font-size: 0.85em;
+    box-shadow: 0 3px 8px rgba(255, 154, 158, 0.4);
 }
 
-/* Кнопки управления */
+/* Верхние кнопки */
 .controls {
     display: flex;
     gap: 10px;
@@ -62,7 +61,7 @@ body {
 }
 
 .btn {
-    padding: 6px 16px;
+    padding: 7px 18px;
     border: none;
     border-radius: 20px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
@@ -77,100 +76,108 @@ body {
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: scale(0.95); }
 
-/* Сетка карточек (4 колонки x 4 ряда) */
+/* Сетка карточек: 2 колонки x 3 ряда = 6 карточек */
 .grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 10px;
-    min-height: 0; /* Важно для flex-контейнера */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    min-height: 0;
+    margin-bottom: 10px;
 }
 
-/* Стиль карточки */
+/* Карточка */
 .card {
-    border-radius: 16px;
-    padding: 8px;
+    border-radius: 20px;
+    padding: 10px;
     cursor: pointer;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    border: 2px solid rgba(255,255,255,0.6);
-    background: white; /* Дефолтный фон */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: 2px solid rgba(255,255,255,0.8);
 }
 
 .card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     z-index: 10;
 }
 
 .card.playing {
     animation: pulse 0.5s ease;
     border-color: #fff;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 12px 30px rgba(0,0,0,0.15);
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.04); }
     100% { transform: scale(1); }
 }
 
 /* Номер в кружочке */
 .number {
     position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 20px;
-    height: 20px;
+    top: 10px;
+    left: 10px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: white;
     color: #5a3e2b;
-    font-size: 0.7em;
+    font-size: 0.85em;
     font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
-/* Картинка Sailor Moon */
+/* КРУПНАЯ КАРТИНКА */
 .card-img {
-    width: 50px;
-    height: 50px;
+    width: 110px;
+    height: 110px;
     object-fit: contain;
-    margin-bottom: 4px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    margin: 5px 0 10px 0;
+    filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
+    transition: transform 0.3s ease;
 }
 
-/* Текст внутри карточки */
+.card:hover .card-img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+/* Текст */
 .chinese {
-    font-size: 1.5em;
-    font-weight: 800;
+    font-size: 1.8em;
+    font-weight: 900;
     color: #3d2817;
     line-height: 1;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .pinyin {
-    font-size: 0.7em;
+    font-size: 0.85em;
     color: #6b4c3a;
-    font-weight: 600;
-    margin-bottom: 2px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
 }
 
 .russian {
-    font-size: 0.8em;
-    font-weight: 700;
-    color: #8b6f47;
+    font-size: 0.95em;
+    font-weight: 800;
+    color: #5a3e2b;
+    text-transform: lowercase;
 }
 
-/* Цветовые темы для карточек (градиенты) */
+/* Цветовые темы карточек */
 .c1 { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
 .c2 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
 .c3 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
@@ -188,13 +195,55 @@ body {
 .c15 { background: linear-gradient(135deg, #f093fb, #f5576c); }
 .c16 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
 
-/* Подвал */
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+    padding-top: 5px;
+}
+
+.page-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #5a3e2b;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    font-size: 0.9em;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: #fed6e3;
+    transform: translateY(-2px);
+}
+
+.page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.page-indicator {
+    font-weight: 800;
+    color: #5a3e2b;
+    font-size: 1em;
+    background: rgba(255,255,255,0.6);
+    padding: 6px 16px;
+    border-radius: 15px;
+}
+
 .footer {
     text-align: center;
     font-size: 0.75em;
     color: #8b6f47;
-    padding-top: 5px;
     flex-shrink: 0;
+    font-weight: 600;
+    margin-top: 5px;
 }
 </style>
 </head>
@@ -207,17 +256,22 @@ body {
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakAll('cn')"> Китайские</button>
-    <button class="btn" onclick="speakAll('ru')">🇷 Русские</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
 <div class="grid" id="grid"></div>
 
-<div class="footer">Mia's Mandarin © 2026</div>
+<div class="pagination">
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
+    <span class="page-indicator" id="pageIndicator">Страница 1 / 3</span>
+    <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
+</div>
+
+<div class="footer">Mia's Mandarin © 2026 ✨</div>
 
 <script>
-// Данные слов
 const words = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7180.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7181.png' },
@@ -237,24 +291,29 @@ const words = [
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7195.png' }
 ];
 
-// Путь к картинкам на GitHub Pages
-// Так как сайт лежит в корне videohsk, путь будет относительным: ./img/FILENAME
-const imgPath = './img/'; 
-
+const imgPath = './img/';
+const cardsPerPage = 6;
+let currentPage = 0;
 let currentWords = [...words];
+const totalPages = Math.ceil(currentWords.length / cardsPerPage);
 
 function render() {
     const grid = document.getElementById('grid');
     grid.innerHTML = '';
     
-    currentWords.forEach((word, index) => {
+    const start = currentPage * cardsPerPage;
+    const end = start + cardsPerPage;
+    const pageWords = currentWords.slice(start, end);
+    
+    pageWords.forEach((word, index) => {
+        const globalIndex = start + index;
         const card = document.createElement('div');
         card.className = `card ${word.c}`;
-        card.id = `card-${index}`;
-        card.onclick = () => speakCard(index);
+        card.id = `card-${globalIndex}`;
+        card.onclick = () => speakCard(globalIndex);
         
         card.innerHTML = `
-            <div class="number">${index + 1}</div>
+            <div class="number">${globalIndex + 1}</div>
             <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
             <div class="chinese">${word.cn}</div>
             <div class="pinyin">${word.py}</div>
@@ -263,15 +322,31 @@ function render() {
         
         grid.appendChild(card);
     });
+    
+    updatePagination();
 }
 
-// Функция озвучки
+function updatePagination() {
+    document.getElementById('pageIndicator').textContent = `Страница ${currentPage + 1} / ${totalPages}`;
+    document.getElementById('prevBtn').disabled = currentPage === 0;
+    document.getElementById('nextBtn').disabled = currentPage === totalPages - 1;
+}
+
+function changePage(direction) {
+    const newPage = currentPage + direction;
+    if (newPage >= 0 && newPage < totalPages) {
+        currentPage = newPage;
+        render();
+    }
+}
+
 function speak(text, lang) {
     if ('speechSynthesis' in window) {
-        speechSynthesis.cancel(); // Остановка предыдущей речи
+        speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
-        utterance.rate = 0.9; // Немного медленнее для обучения
+        utterance.rate = 0.85;
+        utterance.pitch = 1.05;
         speechSynthesis.speak(utterance);
     }
 }
@@ -280,38 +355,41 @@ function speakCard(index) {
     const word = currentWords[index];
     const card = document.getElementById(`card-${index}`);
     
-    // Анимация нажатия
     card.classList.add('playing');
     setTimeout(() => card.classList.remove('playing'), 600);
     
-    // Озвучка: сначала китайский, потом русский
     speak(word.cn, 'zh-CN');
     setTimeout(() => {
         speak(word.ru, 'ru-RU');
-    }, 1000);
+    }, 1100);
 }
 
-function speakAll(lang) {
+function speakCurrentPage(lang) {
+    const start = currentPage * cardsPerPage;
+    const end = Math.min(start + cardsPerPage, currentWords.length);
     let delay = 0;
-    currentWords.forEach((word, index) => {
+    
+    for (let i = start; i < end; i++) {
         setTimeout(() => {
-            const card = document.getElementById(`card-${index}`);
-            if(card) {
+            const card = document.getElementById(`card-${i}`);
+            if (card) {
                 card.classList.add('playing');
                 setTimeout(() => card.classList.remove('playing'), 600);
             }
+            const word = currentWords[i];
             speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
         }, delay);
-        delay += 1800; // Пауза между словами
-    });
+        delay += 1800;
+    }
 }
 
 function shuffle() {
     currentWords.sort(() => Math.random() - 0.5);
+    currentPage = 0;
     render();
 }
 
-// Запуск при загрузке
+// Запуск
 render();
 </script>
 </body>
