@@ -149,11 +149,11 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     transition: all 0.3s ease;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .card:hover {
@@ -177,17 +177,17 @@ body {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
 }
 
 .number {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 0.95em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,35 +195,36 @@ body {
 }
 
 .chinese {
-    font-size: 1.9em;
+    font-size: 2em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
 }
 
 .pinyin {
-    font-size: 0.75em;
+    font-size: 0.8em;
     color: #666;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .russian {
-    font-size: 0.85em;
+    font-size: 0.9em;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
+/* КРУПНАЯ КАРТИНКА СПРАВА */
 .card-img {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
 
 .card:hover .card-img {
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
 
 .c1 .number { background: #66bb6a; }
@@ -314,11 +315,18 @@ body {
     opacity: 0.7;
 }
 
-@media (max-height: 700px) {
+/* Адаптивность для маленьких экранов */
+@media (max-height: 750px) {
     .header h1 { font-size: 2.5em; }
-    .chinese { font-size: 1.6em; }
-    .card-img { width: 75px; height: 75px; }
-    .card { padding: 10px; }
+    .chinese { font-size: 1.7em; }
+    .card-img { width: 100px; height: 100px; }
+    .card { padding: 10px; gap: 8px; }
+}
+
+@media (max-height: 650px) {
+    .chinese { font-size: 1.5em; }
+    .card-img { width: 85px; height: 85px; }
+    .number { width: 30px; height: 30px; min-width: 30px; font-size: 0.9em; }
 }
 </style>
 </head>
@@ -336,7 +344,7 @@ body {
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakCurrentPage('cn')">🇳 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
@@ -348,7 +356,7 @@ body {
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
-<div class="footer-decor">🌸 </div>
+<div class="footer-decor"> </div>
 
 <script>
 const words = [
