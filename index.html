@@ -3,55 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mia's Mandarin - Sailor Moon Edition 🌙</title>
+<title>Mia's Mandarin - Day 2 🌙</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', 'Noto Sans SC', sans-serif;
+    font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
     height: 100vh;
-    overflow: hidden; /* Строго без скролла */
-    background: linear-gradient(180deg, #fef9f3 0%, #fff5eb 50%, #ffe8d6 100%);
+    overflow: hidden;
+    background: #fdf6ec; /* Светлый кремовый как в образце */
     display: flex;
     flex-direction: column;
     padding: 12px 20px;
+    position: relative;
 }
 
-/* Шапка */
+/* Декоративное облачко слева сверху */
+.cloud {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 2.5em;
+    opacity: 0.7;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Заголовок */
 .header {
     text-align: center;
-    padding-bottom: 8px;
+    padding: 5px 0 10px;
     flex-shrink: 0;
     position: relative;
 }
 
-.header h1 {
-    font-size: 1.9em;
-    color: #5a3e2b;
-    font-weight: 900;
-    text-shadow: 2px 2px 0 rgba(255, 214, 165, 0.8);
-}
-
-.subtitle {
-    font-size: 0.85em;
-    color: #8b6f47;
-    margin-top: 2px;
-}
-
-.day-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    padding: 5px 14px;
+.header-top {
+    display: inline-block;
+    background: linear-gradient(90deg, #e8d5f5, #f5e6d3);
+    padding: 4px 20px;
     border-radius: 20px;
-    color: white;
-    font-weight: bold;
     font-size: 0.85em;
-    box-shadow: 0 3px 8px rgba(255, 154, 158, 0.4);
+    color: #6b4c8a;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
-/* Верхние кнопки */
+.header h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 3.5em;
+    color: #3d2817;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: -10px;
+    right: -10px;
+    height: 8px;
+    background: linear-gradient(90deg, #ffb6c1, #ff69b4);
+    border-radius: 4px;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.heart {
+    color: #ff69b4;
+    font-size: 0.6em;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Бейдж страницы в правом верхнем углу */
+.page-badge {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: white;
+    border: 2px dashed #ffb6c1;
+    border-radius: 15px;
+    padding: 6px 14px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.page-badge .current {
+    font-size: 1.4em;
+    font-weight: 900;
+    color: #6b4c8a;
+}
+
+.page-badge .total {
+    font-size: 0.75em;
+    color: #999;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    background: #e0e0e0;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+/* Кнопки управления */
 .controls {
     display: flex;
     gap: 10px;
@@ -61,139 +123,183 @@ body {
 }
 
 .btn {
-    padding: 7px 18px;
+    padding: 6px 16px;
     border: none;
     border-radius: 20px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.85em;
+    font-size: 0.8em;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
 
 .btn:hover { transform: translateY(-2px); }
-.btn:active { transform: scale(0.95); }
 
-/* Сетка карточек: 2 колонки x 3 ряда = 6 карточек */
+/* Сетка карточек: 2 колонки */
 .grid {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 15px;
+    gap: 12px;
     min-height: 0;
-    margin-bottom: 10px;
+    overflow: hidden;
 }
 
-/* Карточка */
+/* Горизонтальная карточка как в образце */
 .card {
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 16px;
+    padding: 10px 12px;
     cursor: pointer;
-    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    border: 2px solid rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.8);
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     z-index: 10;
 }
 
 .card.playing {
-    animation: pulse 0.5s ease;
-    border-color: #fff;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 12px 30px rgba(0,0,0,0.15);
+    animation: bounce 0.5s ease;
+    box-shadow: 0 0 0 3px #fff, 0 8px 20px rgba(0,0,0,0.12);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
 }
 
-/* Номер в кружочке */
+/* Номер в цветном кружке слева */
 .number {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
     border-radius: 50%;
-    background: white;
-    color: #5a3e2b;
-    font-size: 0.85em;
+    color: white;
     font-weight: 800;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    z-index: 2;
+    margin-right: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-/* КРУПНАЯ КАРТИНКА */
+/* Текстовый блок */
+.text-block {
+    flex: 1;
+    min-width: 0;
+    padding-right: 10px;
+    border-right: 2px dashed rgba(0,0,0,0.15); /* Пунктирная линия как в образце */
+}
+
+.chinese {
+    font-size: 1.7em;
+    font-weight: 900;
+    color: #2d2d2d;
+    line-height: 1.1;
+}
+
+.pinyin {
+    font-size: 0.75em;
+    color: #666;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.russian {
+    font-size: 0.85em;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+/* Иллюстрация справа */
 .card-img {
-    width: 110px;
-    height: 110px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
-    margin: 5px 0 10px 0;
-    filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
+    margin-left: 10px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     transition: transform 0.3s ease;
 }
 
 .card:hover .card-img {
-    transform: scale(1.1) rotate(3deg);
+    transform: scale(1.1);
 }
 
-/* Текст */
-.chinese {
-    font-size: 1.8em;
-    font-weight: 900;
-    color: #3d2817;
-    line-height: 1;
-    margin-bottom: 4px;
-}
+/* Цветовые темы карточек (пастельные как в образце) */
+.c1 { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); }
+.c1 .number { background: #66bb6a; }
+.c1 .russian { color: #2e7d32; }
 
-.pinyin {
-    font-size: 0.85em;
-    color: #6b4c3a;
-    font-weight: 700;
-    margin-bottom: 3px;
-    letter-spacing: 0.5px;
-}
+.c2 { background: linear-gradient(135deg, #e3f2fd, #e8eaf6); }
+.c2 .number { background: #42a5f5; }
+.c2 .russian { color: #1565c0; }
 
-.russian {
-    font-size: 0.95em;
-    font-weight: 800;
-    color: #5a3e2b;
-    text-transform: lowercase;
-}
+.c3 { background: linear-gradient(135deg, #fff3e0, #fbe9e7); }
+.c3 .number { background: #ff9800; }
+.c3 .russian { color: #e65100; }
 
-/* Цветовые темы карточек */
-.c1 { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
-.c2 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
-.c3 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
-.c4 { background: linear-gradient(135deg, #d299c2, #fef9d7); }
-.c5 { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
-.c6 { background: linear-gradient(135deg, #fddb92, #d1fdff); }
-.c7 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
-.c8 { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
-.c9 { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
-.c10 { background: linear-gradient(135deg, #f6d365, #fda085); }
-.c11 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
-.c12 { background: linear-gradient(135deg, #a6c0fe, #f68084); }
-.c13 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
-.c14 { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
-.c15 { background: linear-gradient(135deg, #f093fb, #f5576c); }
-.c16 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.c4 { background: linear-gradient(135deg, #f3e5f5, #fce4ec); }
+.c4 .number { background: #ab47bc; }
+.c4 .russian { color: #6a1b9a; }
+
+.c5 { background: linear-gradient(135deg, #fffde7, #fff9c4); }
+.c5 .number { background: #fbc02d; }
+.c5 .russian { color: #f57f17; }
+
+.c6 { background: linear-gradient(135deg, #e0f2f1, #e8f5e9); }
+.c6 .number { background: #26a69a; }
+.c6 .russian { color: #00695c; }
+
+.c7 { background: linear-gradient(135deg, #fbe9e7, #ffccbc); }
+.c7 .number { background: #ff7043; }
+.c7 .russian { color: #d84315; }
+
+.c8 { background: linear-gradient(135deg, #e8eaf6, #c5cae9); }
+.c8 .number { background: #5c6bc0; }
+.c8 .russian { color: #283593; }
+
+.c9 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+.c9 .number { background: #ec407a; }
+.c9 .russian { color: #ad1457; }
+
+.c10 { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
+.c10 .number { background: #ffa726; }
+.c10 .russian { color: #e65100; }
+
+.c11 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+.c11 .number { background: #43a047; }
+.c11 .russian { color: #1b5e20; }
+
+.c12 { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+.c12 .number { background: #1e88e5; }
+.c12 .russian { color: #0d47a1; }
+
+.c13 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+.c13 .number { background: #fb8c00; }
+.c13 .russian { color: #bf360c; }
+
+.c14 { background: linear-gradient(135deg, #ede7f6, #d1c4e9); }
+.c14 .number { background: #7e57c2; }
+.c14 .russian { color: #4527a0; }
+
+.c15 { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); }
+.c15 .number { background: #00acc1; }
+.c15 .russian { color: #006064; }
+
+.c16 { background: linear-gradient(135deg, #fff8e1, #ffe082); }
+.c16 .number { background: #ffb300; }
+.c16 .russian { color: #e65100; }
 
 /* Пагинация */
 .pagination {
@@ -202,11 +308,11 @@ body {
     align-items: center;
     gap: 15px;
     flex-shrink: 0;
-    padding-top: 5px;
+    padding: 8px 0 5px;
 }
 
 .page-btn {
-    padding: 8px 20px;
+    padding: 7px 18px;
     border: none;
     border-radius: 20px;
     background: white;
@@ -215,7 +321,7 @@ body {
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     transition: all 0.2s;
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 
 .page-btn:hover:not(:disabled) {
@@ -224,40 +330,37 @@ body {
 }
 
 .page-btn:disabled {
-    opacity: 0.4;
+    opacity: 0.3;
     cursor: not-allowed;
 }
 
-.page-indicator {
-    font-weight: 800;
-    color: #5a3e2b;
-    font-size: 1em;
-    background: rgba(255,255,255,0.6);
-    padding: 6px 16px;
-    border-radius: 15px;
-}
-
-.footer {
+/* Декор внизу */
+.footer-decor {
     text-align: center;
-    font-size: 0.75em;
-    color: #8b6f47;
+    font-size: 1.2em;
+    padding-top: 3px;
     flex-shrink: 0;
-    font-weight: 600;
-    margin-top: 5px;
+    opacity: 0.7;
 }
 </style>
 </head>
 <body>
 
+<!-- Декоративное облачко -->
+<div class="cloud">☁️</div>
+
 <div class="header">
-    <h1>🌙 Sailor Moon Mandarin</h1>
-    <div class="subtitle">Нажми на карточку для озвучки 🔊</div>
-    <div class="day-badge">Day 2</div>
+    <div class="header-top">⭐ HSK6 人物性格情感词汇</div>
+    <h1>Day 2 <span class="heart">💗</span></h1>
+    <div class="page-badge">
+        <span class="total" id="pageTotal">1/2</span>
+        <div class="current" id="pageCurrent">01</div>
+    </div>
 </div>
 
 <div class="controls">
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
@@ -265,11 +368,10 @@ body {
 
 <div class="pagination">
     <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
-    <span class="page-indicator" id="pageIndicator">Страница 1 / 3</span>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
-<div class="footer">Mia's Mandarin © 2026 ✨</div>
+<div class="footer-decor">🌸  🌼 🐰 </div>
 
 <script>
 const words = [
@@ -292,7 +394,7 @@ const words = [
 ];
 
 const imgPath = './img/';
-const cardsPerPage = 6;
+const cardsPerPage = 8; // 8 карточек на странице (4 ряда × 2 колонки)
 let currentPage = 0;
 let currentWords = [...words];
 const totalPages = Math.ceil(currentWords.length / cardsPerPage);
@@ -314,10 +416,12 @@ function render() {
         
         card.innerHTML = `
             <div class="number">${globalIndex + 1}</div>
+            <div class="text-block">
+                <div class="chinese">${word.cn}</div>
+                <div class="pinyin">${word.py}</div>
+                <div class="russian">${word.ru}</div>
+            </div>
             <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
-            <div class="chinese">${word.cn}</div>
-            <div class="pinyin">${word.py}</div>
-            <div class="russian">${word.ru}</div>
         `;
         
         grid.appendChild(card);
@@ -327,7 +431,8 @@ function render() {
 }
 
 function updatePagination() {
-    document.getElementById('pageIndicator').textContent = `Страница ${currentPage + 1} / ${totalPages}`;
+    document.getElementById('pageCurrent').textContent = String(currentPage + 1).padStart(2, '0');
+    document.getElementById('pageTotal').textContent = `${currentPage + 1}/${totalPages}`;
     document.getElementById('prevBtn').disabled = currentPage === 0;
     document.getElementById('nextBtn').disabled = currentPage === totalPages - 1;
 }
@@ -359,9 +464,7 @@ function speakCard(index) {
     setTimeout(() => card.classList.remove('playing'), 600);
     
     speak(word.cn, 'zh-CN');
-    setTimeout(() => {
-        speak(word.ru, 'ru-RU');
-    }, 1100);
+    setTimeout(() => speak(word.ru, 'ru-RU'), 1100);
 }
 
 function speakCurrentPage(lang) {
@@ -389,7 +492,6 @@ function shuffle() {
     render();
 }
 
-// Запуск
 render();
 </script>
 </body>
