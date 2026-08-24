@@ -142,16 +142,14 @@ body {
     overflow: hidden;
 }
 
-/* Карточка с иллюстрацией на фоне */
 .card {
     border-radius: 20px;
     padding: 15px;
     cursor: pointer;
     position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     transition: all 0.3s ease;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
@@ -174,24 +172,13 @@ body {
     50% { transform: scale(1.03); }
 }
 
-/* Фоновая картинка на всю карточку */
-.card-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.15; /* Полупрозрачность фона */
-    z-index: 0;
-    transition: opacity 0.3s ease;
+/* Текстовый блок слева */
+.text-block {
+    flex: 1;
+    z-index: 2;
+    padding-right: 10px;
 }
 
-.card:hover .card-bg {
-    opacity: 0.2;
-}
-
-/* Номер в кружке */
 .number {
     width: 36px;
     height: 36px;
@@ -205,14 +192,6 @@ body {
     justify-content: center;
     margin-bottom: 8px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    z-index: 1;
-}
-
-/* Текстовый блок */
-.text-block {
-    text-align: center;
-    z-index: 1;
-    width: 100%;
 }
 
 .chinese {
@@ -233,6 +212,20 @@ body {
 .russian {
     font-size: 0.95em;
     font-weight: 800;
+}
+
+/* Картинка справа - НЕ прозрачная */
+.card-img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    z-index: 1;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1) rotate(2deg);
 }
 
 /* Цвета для кружков и текста */
@@ -339,7 +332,7 @@ body {
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakCurrentPage('cn')">🇨 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
@@ -351,26 +344,26 @@ body {
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
-<div class="footer-decor">🌸  </div>
+<div class="footer-decor">  </div>
 
 <script>
 const words = [
-    { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7180.png' },
-    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7181.png' },
-    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7182.png' },
-    { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7183.png' },
-    { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7184.png' },
-    { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7185.png' },
-    { cn:'热闹', py:'rè nao', ru:'оживлённый', c:'c7', img:'IMG_7186.png' },
-    { cn:'安静', py:'ān jìng', ru:'тихий', c:'c8', img:'IMG_7187.png' },
-    { cn:'便宜', py:'pián yi', ru:'дешёвый', c:'c9', img:'IMG_7188.png' },
-    { cn:'昂贵', py:'áng guì', ru:'дорогой', c:'c10', img:'IMG_7189.png' },
-    { cn:'成功', py:'chéng gōng', ru:'успех', c:'c11', img:'IMG_7190.png' },
-    { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7191.png' },
-    { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7192.png' },
-    { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7193.png' },
-    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7194.png' },
-    { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7195.png' }
+    { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7181.png' },
+    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7182.png' },
+    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7183.png' },
+    { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7184.png' },
+    { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7185.png' },
+    { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7186.png' },
+    { cn:'热闹', py:'rè nao', ru:'оживлённый', c:'c7', img:'IMG_7187.png' },
+    { cn:'安静', py:'ān jìng', ru:'тихий', c:'c8', img:'IMG_7188.png' },
+    { cn:'便宜', py:'pián yi', ru:'дешёвый', c:'c9', img:'IMG_7189.png' },
+    { cn:'昂贵', py:'áng guì', ru:'дорогой', c:'c10', img:'IMG_7190.png' },
+    { cn:'成功', py:'chéng gōng', ru:'успех', c:'c11', img:'IMG_7191.png' },
+    { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7192.png' },
+    { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7193.png' },
+    { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7194.png' },
+    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7195.png' },
+    { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7180.png' }
 ];
 
 const imgPath = './img/';
@@ -395,13 +388,13 @@ function render() {
         card.onclick = () => speakCard(globalIndex);
         
         card.innerHTML = `
-            <img src="${imgPath}${word.img}" class="card-bg" alt="${word.cn}" onerror="this.style.display='none'">
-            <div class="number">${globalIndex + 1}</div>
             <div class="text-block">
+                <div class="number">${globalIndex + 1}</div>
                 <div class="chinese">${word.cn}</div>
                 <div class="pinyin">${word.py}</div>
                 <div class="russian">${word.ru}</div>
             </div>
+            <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
         `;
         
         grid.appendChild(card);
