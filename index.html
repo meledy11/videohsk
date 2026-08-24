@@ -13,7 +13,7 @@ body {
     font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
     height: 100vh;
     overflow: hidden;
-    background: #FFFFFF; /* Чисто белый фон — светлее карточек */
+    background: #F0EBE0; /* Тёплый серо-бежевый фон страницы — темнее карточек */
     display: flex;
     flex-direction: column;
     padding: 8px;
@@ -86,7 +86,7 @@ body {
     position: absolute;
     top: 4px;
     right: 8px;
-    background: white;
+    background: #FFFEF5;
     border: 2px dashed #ffb6c1;
     border-radius: 12px;
     padding: 4px 10px;
@@ -144,7 +144,7 @@ body {
     overflow: hidden;
 }
 
-/* Карточки чуть кремовые/с оттенком чтобы выделялись на белом фоне */
+/* ФОН КАРТОЧЕК = ФОН КАРТИНОК (кремовый/слоновая кость) */
 .card {
     border-radius: 14px;
     padding: 6px;
@@ -154,20 +154,20 @@ body {
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
-    background: #FFFEF8; /* Очень лёгкий кремовый — чуть темнее белого фона */
-    border: 1px solid #F5F0E8;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    background: #FFFEF5; /* Точно как фон картинок! */
+    border: 1px solid #EDE8DD;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .card.playing {
     border: 2.5px solid #ff69b4;
-    box-shadow: 0 0 0 3px rgba(255,105,180,0.2), 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 0 0 3px rgba(255,105,180,0.2), 0 4px 12px rgba(0,0,0,0.1);
     animation: pulse 0.5s ease;
 }
 
@@ -215,9 +215,8 @@ body {
     z-index: 2;
 }
 
-/* УКРУПНЁННЫЙ ТЕКСТ */
 .chinese {
-    font-size: 2em; /* Было 1.5em */
+    font-size: 2em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
@@ -225,7 +224,7 @@ body {
 }
 
 .pinyin {
-    font-size: 0.85em; /* Было 0.7em */
+    font-size: 0.85em;
     color: #666;
     font-weight: 600;
     line-height: 1.1;
@@ -233,7 +232,7 @@ body {
 }
 
 .russian {
-    font-size: 1em; /* Было 0.8em */
+    font-size: 1em;
     font-weight: 800;
     line-height: 1.1;
     margin-top: 1px;
@@ -300,14 +299,14 @@ body {
     padding: 6px 14px;
     border: none;
     border-radius: 18px;
-    background: #FFFEF8;
+    background: #FFFEF5;
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     transition: all 0.2s;
     font-size: 0.8em;
-    border: 1px solid #F5F0E8;
+    border: 1px solid #EDE8DD;
 }
 
 .page-btn:hover:not(:disabled) {
