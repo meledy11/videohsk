@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Mia's Mandarin - Day 2 🌙</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
@@ -16,7 +16,7 @@ body {
     background: linear-gradient(135deg, #fef9f3 0%, #fff5eb 50%, #ffe8d6 100%);
     display: flex;
     flex-direction: column;
-    padding: 10px 15px;
+    padding: 10px;
     position: relative;
 }
 
@@ -24,9 +24,10 @@ body {
     position: absolute;
     top: 15px;
     left: 20px;
-    font-size: 2.5em;
+    font-size: 2em;
     opacity: 0.7;
     animation: float 4s ease-in-out infinite;
+    z-index: 100;
 }
 
 @keyframes float {
@@ -44,17 +45,17 @@ body {
 .header-top {
     display: inline-block;
     background: linear-gradient(90deg, #e8d5f5, #f5e6d3);
-    padding: 4px 20px;
+    padding: 3px 15px;
     border-radius: 20px;
-    font-size: 0.85em;
+    font-size: 0.75em;
     color: #6b4c8a;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .header h1 {
     font-family: 'Caveat', cursive;
-    font-size: 3em;
+    font-size: 2.5em;
     color: #3d2817;
     font-weight: 700;
     position: relative;
@@ -64,10 +65,10 @@ body {
 .header h1::after {
     content: '';
     position: absolute;
-    bottom: 5px;
+    bottom: 3px;
     left: -10px;
     right: -10px;
-    height: 8px;
+    height: 6px;
     background: linear-gradient(90deg, #ffb6c1, #ff69b4);
     border-radius: 4px;
     opacity: 0.6;
@@ -83,51 +84,52 @@ body {
 
 .page-badge {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 5px;
+    right: 10px;
     background: white;
     border: 2px dashed #ffb6c1;
-    border-radius: 15px;
-    padding: 6px 14px;
+    border-radius: 12px;
+    padding: 4px 10px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .page-badge .current {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 900;
     color: #6b4c8a;
 }
 
 .page-badge .total {
-    font-size: 0.75em;
+    font-size: 0.7em;
     color: #999;
     position: absolute;
-    top: -8px;
-    right: -5px;
+    top: -6px;
+    right: -3px;
     background: #e0e0e0;
-    padding: 2px 8px;
-    border-radius: 10px;
+    padding: 1px 6px;
+    border-radius: 8px;
 }
 
 .controls {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
     margin-bottom: 8px;
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 .btn {
-    padding: 6px 16px;
+    padding: 5px 12px;
     border: none;
-    border-radius: 20px;
+    border-radius: 18px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.8em;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    font-size: 0.75em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
 
@@ -137,34 +139,37 @@ body {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
     min-height: 0;
     overflow: hidden;
 }
 
+/* Карточка БЕЗ белого фона - на общем фоне */
 .card {
-    border-radius: 18px;
-    padding: 12px;
+    border-radius: 16px;
+    padding: 8px;
     cursor: pointer;
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
     transition: all 0.3s ease;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    overflow: visible;
+    background: transparent; /* Прозрачный фон */
+    border: 2px solid transparent;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    z-index: 10;
+    transform: translateY(-2px);
 }
 
+/* Подсветка при нажатии */
 .card.playing {
+    border: 3px solid #ff69b4;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.4); /* Легкая подсветка */
+    box-shadow: 0 0 0 4px rgba(255,105,180,0.2);
     animation: pulse 0.5s ease;
-    box-shadow: 0 0 0 3px rgba(255,182,193,0.4), 0 8px 20px rgba(0,0,0,0.12);
 }
 
 @keyframes pulse {
@@ -172,59 +177,66 @@ body {
     50% { transform: scale(1.03); }
 }
 
-.text-block {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.number {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-    border-radius: 50%;
-    color: white;
-    font-weight: 800;
-    font-size: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.chinese {
-    font-size: 2em;
-    font-weight: 900;
-    color: #2d2d2d;
-    line-height: 1;
-}
-
-.pinyin {
-    font-size: 0.8em;
-    color: #666;
-    font-weight: 600;
-    line-height: 1.1;
-}
-
-.russian {
-    font-size: 0.9em;
-    font-weight: 800;
-    line-height: 1.1;
-}
-
-/* КРУПНАЯ КАРТИНКА СПРАВА */
+/* Картинка сверху */
 .card-img {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 55%;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
 
 .card:hover .card-img {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+/* Текст снизу */
+.text-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 0 0 0;
+    position: relative;
+}
+
+.number {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 800;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.chinese {
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #2d2d2d;
+    line-height: 1;
+    margin-top: 10px;
+}
+
+.pinyin {
+    font-size: 0.7em;
+    color: #666;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.russian {
+    font-size: 0.8em;
+    font-weight: 800;
+    line-height: 1.1;
 }
 
 .c1 .number { background: #66bb6a; }
@@ -279,22 +291,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     flex-shrink: 0;
-    padding: 8px 0 5px;
+    padding: 6px 0 3px;
 }
 
 .page-btn {
-    padding: 7px 18px;
+    padding: 6px 14px;
     border: none;
-    border-radius: 20px;
+    border-radius: 18px;
     background: white;
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     transition: all 0.2s;
-    font-size: 0.85em;
+    font-size: 0.8em;
 }
 
 .page-btn:hover:not(:disabled) {
@@ -307,26 +319,53 @@ body {
     cursor: not-allowed;
 }
 
-.footer-decor {
-    text-align: center;
-    font-size: 1.2em;
-    padding-top: 3px;
-    flex-shrink: 0;
-    opacity: 0.7;
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .card {
+        padding: 6px;
+    }
+    
+    .card-img {
+        height: 50%;
+    }
+    
+    .chinese {
+        font-size: 1.3em;
+    }
+    
+    .pinyin {
+        font-size: 0.65em;
+    }
+    
+    .russian {
+        font-size: 0.75em;
+    }
+    
+    .number {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        font-size: 0.8em;
+        top: -12px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
 }
 
-/* Адаптивность для маленьких экранов */
-@media (max-height: 750px) {
-    .header h1 { font-size: 2.5em; }
-    .chinese { font-size: 1.7em; }
-    .card-img { width: 100px; height: 100px; }
-    .card { padding: 10px; gap: 8px; }
-}
-
-@media (max-height: 650px) {
-    .chinese { font-size: 1.5em; }
-    .card-img { width: 85px; height: 85px; }
-    .number { width: 30px; height: 30px; min-width: 30px; font-size: 0.9em; }
+@media (max-width: 400px) {
+    .chinese {
+        font-size: 1.1em;
+    }
+    
+    .card-img {
+        height: 45%;
+    }
 }
 </style>
 </head>
@@ -344,9 +383,9 @@ body {
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
-    <button class="btn" onclick="shuffle()">🔀 Микс</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇺 Русские</button>
+    <button class="btn" onclick="shuffle()"> Микс</button>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -356,13 +395,11 @@ body {
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
-<div class="footer-decor"> </div>
-
 <script>
 const words = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
-    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
+    { cn:'简单', py:'jin dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
     { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
     { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
     { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7184.png' },
@@ -400,13 +437,13 @@ function render() {
         card.onclick = () => speakCard(globalIndex);
         
         card.innerHTML = `
+            <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
             <div class="text-block">
                 <div class="number">${globalIndex + 1}</div>
                 <div class="chinese">${word.cn}</div>
                 <div class="pinyin">${word.py}</div>
                 <div class="russian">${word.ru}</div>
             </div>
-            <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
         `;
         
         grid.appendChild(card);
@@ -445,8 +482,9 @@ function speakCard(index) {
     const word = currentWords[index];
     const card = document.getElementById(`card-${index}`);
     
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
     card.classList.add('playing');
-    setTimeout(() => card.classList.remove('playing'), 600);
+    setTimeout(() => card.classList.remove('playing'), 1500);
     
     speak(word.cn, 'zh-CN');
     setTimeout(() => speak(word.ru, 'ru-RU'), 1100);
@@ -461,8 +499,9 @@ function speakCurrentPage(lang) {
         setTimeout(() => {
             const card = document.getElementById(`card-${i}`);
             if (card) {
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
                 card.classList.add('playing');
-                setTimeout(() => card.classList.remove('playing'), 600);
+                setTimeout(() => card.classList.remove('playing'), 1200);
             }
             const word = currentWords[i];
             speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
