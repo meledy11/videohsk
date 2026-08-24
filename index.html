@@ -144,7 +144,7 @@ body {
     overflow: hidden;
 }
 
-/* Карточка БЕЗ белого фона - на общем фоне */
+/* БЕЛЫЕ КАРТОЧКИ - картинки сливаются с фоном */
 .card {
     border-radius: 16px;
     padding: 8px;
@@ -154,21 +154,21 @@ body {
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
-    background: transparent; /* Прозрачный фон */
+    background: white; /* Белый фон карточки */
     border: 2px solid transparent;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
     overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 /* Подсветка при нажатии */
 .card.playing {
     border: 3px solid #ff69b4;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.4); /* Легкая подсветка */
-    box-shadow: 0 0 0 4px rgba(255,105,180,0.2);
+    box-shadow: 0 0 0 4px rgba(255,105,180,0.2), 0 6px 15px rgba(0,0,0,0.1);
     animation: pulse 0.5s ease;
 }
 
@@ -383,15 +383,15 @@ body {
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakCurrentPage('cn')">🇨 Китайские</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇺 Русские</button>
-    <button class="btn" onclick="shuffle()"> Микс</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷 Русские</button>
+    <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">️ Назад</button>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
@@ -399,7 +399,7 @@ body {
 const words = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
-    { cn:'简单', py:'jin dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
+    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
     { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
     { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
     { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7184.png' },
