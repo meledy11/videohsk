@@ -5,183 +5,172 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mia's Mandarin - Sailor Moon Edition 🌙</title>
 <style>
+/* Основные настройки страницы */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Segoe UI', 'Noto Sans SC', sans-serif;
-    height: 100vh;
-    overflow: hidden;
+    height: 100vh; /* На всю высоту экрана */
+    overflow: hidden; /* Без скролла */
     background: linear-gradient(180deg, #fef9f3 0%, #fff5eb 50%, #ffe8d6 100%);
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 10px;
 }
 
+/* Шапка */
 .header {
     text-align: center;
-    padding: 5px 0;
+    padding-bottom: 8px;
     flex-shrink: 0;
+    position: relative;
 }
 
 .header h1 {
     font-size: 1.8em;
     color: #5a3e2b;
-    text-shadow: 2px 2px 0 #ffd6a5;
     font-weight: 800;
+    text-shadow: 2px 2px 0 rgba(255, 214, 165, 0.8);
 }
 
-.header .subtitle {
-    font-size: 0.8em;
+.subtitle {
+    font-size: 0.85em;
     color: #8b6f47;
     margin-top: 2px;
 }
 
+.day-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    padding: 4px 12px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    box-shadow: 0 2px 5px rgba(255, 154, 158, 0.4);
+}
+
+/* Кнопки управления */
 .controls {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
-    margin: 6px 0;
+    margin-bottom: 10px;
     flex-shrink: 0;
 }
 
 .btn {
-    padding: 6px 14px;
+    padding: 6px 16px;
     border: none;
     border-radius: 20px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.8em;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s;
+    font-size: 0.85em;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: scale(0.95); }
 
+/* Сетка карточек (4 колонки x 4 ряда) */
 .grid {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 8px;
-    min-height: 0;
+    gap: 10px;
+    min-height: 0; /* Важно для flex-контейнера */
 }
 
+/* Стиль карточки */
 .card {
     border-radius: 16px;
-    padding: 8px 6px;
+    padding: 8px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     border: 2px solid rgba(255,255,255,0.6);
+    background: white; /* Дефолтный фон */
 }
 
 .card:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     z-index: 10;
 }
 
-.card:active { transform: scale(0.96); }
-
 .card.playing {
-    animation: bounce 0.6s ease;
-    box-shadow: 0 0 0 3px #fff, 0 8px 20px rgba(0,0,0,0.2);
+    animation: pulse 0.5s ease;
+    border-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
-@keyframes bounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.06); }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
+/* Номер в кружочке */
 .number {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 22px;
-    height: 22px;
+    top: 6px;
+    left: 6px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: white;
+    color: #5a3e2b;
+    font-size: 0.7em;
+    font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 0.75em;
-    color: #5a3e2b;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.emoji {
-    font-size: 1.8em;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    opacity: 0.5;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
-    pointer-events: none;
-}
-
-.card:nth-child(odd) .emoji { animation: float 2.5s ease-in-out infinite; }
-.card:nth-child(even) .emoji { animation: wiggle 2s ease-in-out infinite; }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-@keyframes wiggle {
-    0%, 100% { transform: rotate(-8deg); }
-    50% { transform: rotate(8deg); }
-}
-
+/* Картинка Sailor Moon */
 .card-img {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
-    margin-bottom: 2px;
-    border-radius: 8px;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
+/* Текст внутри карточки */
 .chinese {
-    font-size: 1.6em;
+    font-size: 1.5em;
     font-weight: 800;
     color: #3d2817;
     line-height: 1;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .pinyin {
     font-size: 0.7em;
     color: #6b4c3a;
     font-weight: 600;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .russian {
-    font-size: 0.75em;
-    color: #8b6f47;
-    font-weight: 700;
-    text-transform: lowercase;
-}
-
-.speaker {
-    position: absolute;
-    bottom: 3px;
-    right: 5px;
     font-size: 0.8em;
-    opacity: 0.6;
+    font-weight: 700;
+    color: #8b6f47;
 }
 
+/* Цветовые темы для карточек (градиенты) */
 .c1 { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
 .c2 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
 .c3 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
@@ -198,119 +187,131 @@ body {
 .c14 { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
 .c15 { background: linear-gradient(135deg, #f093fb, #f5576c); }
 .c16 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+
+/* Подвал */
+.footer {
+    text-align: center;
+    font-size: 0.75em;
+    color: #8b6f47;
+    padding-top: 5px;
+    flex-shrink: 0;
+}
 </style>
 </head>
 <body>
+
 <div class="header">
     <h1>🌙 Sailor Moon Mandarin</h1>
     <div class="subtitle">Нажми на карточку для озвучки 🔊</div>
+    <div class="day-badge">Day 2</div>
 </div>
 
 <div class="controls">
-    <button class="btn" onclick="speakAll('cn')">🇨🇳 Китайские</button>
-    <button class="btn" onclick="speakAll('ru')">🇷🇺 Русские</button>
+    <button class="btn" onclick="speakAll('cn')"> Китайские</button>
+    <button class="btn" onclick="speakAll('ru')">🇷 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
 <div class="grid" id="grid"></div>
 
+<div class="footer">Mia's Mandarin © 2026</div>
+
 <script>
+// Данные слов
 const words = [
-    { cn:'安全', py:'ān quán', ru:'безопасный', em:'🛡️', c:'c1', img:'img1' },
-    { cn:'危险', py:'wēi xiǎn', ru:'опасный', em:'⚠️', c:'c2', img:'img2' },
-    { cn:'简单', py:'jiǎn dān', ru:'простой', em:'✨', c:'c3', img:'img3' },
-    { cn:'复杂', py:'fù zá', ru:'сложный', em:'🧩', c:'c4', img:'img4' },
-    { cn:'容易', py:'róng yì', ru:'лёгкий', em:'☁️', c:'c5', img:'img5' },
-    { cn:'困难', py:'kùn nán', ru:'трудный', em:'⛰️', c:'c6', img:'img6' },
-    { cn:'热闹', py:'rè nao', ru:'оживлённый', em:'🎆', c:'c7', img:'img7' },
-    { cn:'安静', py:'ān jìng', ru:'тихий', em:'📚', c:'c8', img:'img8' },
-    { cn:'便宜', py:'pián yi', ru:'дешёвый', em:'💰', c:'c9', img:'img9' },
-    { cn:'昂贵', py:'áng guì', ru:'дорогой', em:'💎', c:'c10', img:'img10' },
-    { cn:'成功', py:'chéng gōng', ru:'успех', em:'🏆', c:'c11', img:'img11' },
-    { cn:'失败', py:'shī bài', ru:'неудача', em:'💔', c:'c12', img:'img12' },
-    { cn:'开心', py:'kāi xīn', ru:'счастливый', em:'🌸', c:'c13', img:'img13' },
-    { cn:'难过', py:'nán guò', ru:'грустный', em:'😢', c:'c14', img:'img14' },
-    { cn:'开始', py:'kāi shǐ', ru:'начать', em:'🟢', c:'c15', img:'img15' },
-    { cn:'结束', py:'jié shù', ru:'закончить', em:'️', c:'c16', img:'img16' }
+    { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7180.png' },
+    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7181.png' },
+    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7182.png' },
+    { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7183.png' },
+    { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7184.png' },
+    { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7185.png' },
+    { cn:'热闹', py:'rè nao', ru:'оживлённый', c:'c7', img:'IMG_7186.png' },
+    { cn:'安静', py:'ān jìng', ru:'тихий', c:'c8', img:'IMG_7187.png' },
+    { cn:'便宜', py:'pián yi', ru:'дешёвый', c:'c9', img:'IMG_7188.png' },
+    { cn:'昂贵', py:'áng guì', ru:'дорогой', c:'c10', img:'IMG_7189.png' },
+    { cn:'成功', py:'chéng gōng', ru:'успех', c:'c11', img:'IMG_7190.png' },
+    { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7191.png' },
+    { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7192.png' },
+    { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7193.png' },
+    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7194.png' },
+    { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7195.png' }
 ];
 
-// ССЫЛКИ НА КАРТИНКИ С GITHUB (папка img)
-// Замените YOUR_USERNAME и your-repo на ваши данные
-const githubUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/your-repo/main/img/';
+// Путь к картинкам на GitHub Pages
+// Так как сайт лежит в корне videohsk, путь будет относительным: ./img/FILENAME
+const imgPath = './img/'; 
 
-const images = {
-    img1: githubUrl + 'IMG_7180.png',
-    img2: githubUrl + 'IMG_7181.png',
-    img3: githubUrl + 'IMG_7182.png',
-    img4: githubUrl + 'IMG_7183.png',
-    img5: githubUrl + 'IMG_7184.png',
-    img6: githubUrl + 'IMG_7185.png',
-    img7: githubUrl + 'IMG_7186.png',
-    img8: githubUrl + 'IMG_7187.png',
-    img9: githubUrl + 'IMG_7188.png',
-    img10: githubUrl + 'IMG_7189.png',
-    img11: githubUrl + 'IMG_7190.png',
-    img12: githubUrl + 'IMG_7191.png',
-    img13: githubUrl + 'IMG_7192.png',
-    img14: githubUrl + 'IMG_7193.png',
-    img15: githubUrl + 'IMG_7194.png',
-    img16: githubUrl + 'IMG_7195.png'
-};
-
-let current = [...words];
+let currentWords = [...words];
 
 function render() {
     const grid = document.getElementById('grid');
-    grid.innerHTML = current.map((w, i) => `
-        <div class="card ${w.c}" onclick="speakCard(${i})" id="c${i}">
-            <div class="number">${i+1}</div>
-            <span class="emoji">${w.em}</span>
-            <img src="${images[w.img]}" class="card-img" alt="${w.cn}" onerror="this.style.display='none'">
-            <div class="chinese">${w.cn}</div>
-            <div class="pinyin">${w.py}</div>
-            <div class="russian">${w.ru}</div>
-            <span class="speaker"></span>
-        </div>
-    `).join('');
+    grid.innerHTML = '';
+    
+    currentWords.forEach((word, index) => {
+        const card = document.createElement('div');
+        card.className = `card ${word.c}`;
+        card.id = `card-${index}`;
+        card.onclick = () => speakCard(index);
+        
+        card.innerHTML = `
+            <div class="number">${index + 1}</div>
+            <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
+            <div class="chinese">${word.cn}</div>
+            <div class="pinyin">${word.py}</div>
+            <div class="russian">${word.ru}</div>
+        `;
+        
+        grid.appendChild(card);
+    });
 }
 
+// Функция озвучки
 function speak(text, lang) {
     if ('speechSynthesis' in window) {
-        speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = lang;
-        u.rate = 0.85;
-        speechSynthesis.speak(u);
+        speechSynthesis.cancel(); // Остановка предыдущей речи
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.9; // Немного медленнее для обучения
+        speechSynthesis.speak(utterance);
     }
 }
 
-function speakCard(i) {
-    const w = current[i];
-    const card = document.getElementById('c'+i);
+function speakCard(index) {
+    const word = currentWords[index];
+    const card = document.getElementById(`card-${index}`);
+    
+    // Анимация нажатия
     card.classList.add('playing');
-    speak(w.cn, 'zh-CN');
-    setTimeout(() => speak(w.ru, 'ru-RU'), 1000);
-    setTimeout(() => card.classList.remove('playing'), 2000);
+    setTimeout(() => card.classList.remove('playing'), 600);
+    
+    // Озвучка: сначала китайский, потом русский
+    speak(word.cn, 'zh-CN');
+    setTimeout(() => {
+        speak(word.ru, 'ru-RU');
+    }, 1000);
 }
 
 function speakAll(lang) {
-    let d = 0;
-    current.forEach((w, i) => {
+    let delay = 0;
+    currentWords.forEach((word, index) => {
         setTimeout(() => {
-            const card = document.getElementById('c'+i);
-            card.classList.add('playing');
-            speak(lang === 'cn' ? w.cn : w.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
-            setTimeout(() => card.classList.remove('playing'), 800);
-        }, d);
-        d += 1500;
+            const card = document.getElementById(`card-${index}`);
+            if(card) {
+                card.classList.add('playing');
+                setTimeout(() => card.classList.remove('playing'), 600);
+            }
+            speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
+        }, delay);
+        delay += 1800; // Пауза между словами
     });
 }
 
 function shuffle() {
-    current = [...words].sort(() => Math.random() - 0.5);
+    currentWords.sort(() => Math.random() - 0.5);
     render();
 }
 
+// Запуск при загрузке
 render();
 </script>
 </body>
