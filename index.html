@@ -13,14 +13,13 @@ body {
     font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
     height: 100vh;
     overflow: hidden;
-    background: #fdf6ec; /* Светлый кремовый как в образце */
+    background: #fdf6ec; /* Единый светлый кремовый фон */
     display: flex;
     flex-direction: column;
     padding: 12px 20px;
     position: relative;
 }
 
-/* Декоративное облачко слева сверху */
 .cloud {
     position: absolute;
     top: 15px;
@@ -35,7 +34,6 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-/* Заголовок */
 .header {
     text-align: center;
     padding: 5px 0 10px;
@@ -83,7 +81,6 @@ body {
     margin-left: 10px;
 }
 
-/* Бейдж страницы в правом верхнем углу */
 .page-badge {
     position: absolute;
     top: 10px;
@@ -113,7 +110,6 @@ body {
     border-radius: 10px;
 }
 
-/* Кнопки управления */
 .controls {
     display: flex;
     gap: 10px;
@@ -137,7 +133,6 @@ body {
 
 .btn:hover { transform: translateY(-2px); }
 
-/* Сетка карточек: 2 колонки */
 .grid {
     flex: 1;
     display: grid;
@@ -147,7 +142,7 @@ body {
     overflow: hidden;
 }
 
-/* Горизонтальная карточка как в образце */
+/* Белая карточка с тонкой рамкой - единый стиль */
 .card {
     border-radius: 16px;
     padding: 10px 12px;
@@ -155,21 +150,24 @@ body {
     display: flex;
     align-items: center;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    border: 1px solid rgba(255,255,255,0.8);
+    background: white; /* Белый фон карточки */
+    border: 2px solid #f0e6d6; /* Тонная рамка */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
     position: relative;
     overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #ffb6c1;
     z-index: 10;
 }
 
 .card.playing {
     animation: bounce 0.5s ease;
-    box-shadow: 0 0 0 3px #fff, 0 8px 20px rgba(0,0,0,0.12);
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255,105,180,0.2), 0 8px 20px rgba(0,0,0,0.1);
 }
 
 @keyframes bounce {
@@ -177,7 +175,6 @@ body {
     50% { transform: scale(1.03); }
 }
 
-/* Номер в цветном кружке слева */
 .number {
     width: 32px;
     height: 32px;
@@ -193,12 +190,11 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-/* Текстовый блок */
 .text-block {
     flex: 1;
     min-width: 0;
     padding-right: 10px;
-    border-right: 2px dashed rgba(0,0,0,0.15); /* Пунктирная линия как в образце */
+    border-right: 2px dashed rgba(0,0,0,0.15);
 }
 
 .chinese {
@@ -221,87 +217,70 @@ body {
     margin-top: 2px;
 }
 
-/* Иллюстрация справа */
+/* КРУПНАЯ КАРТИНКА 120px */
 .card-img {
-    width: 75px;
-    height: 75px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     margin-left: 10px;
     flex-shrink: 0;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
     transition: transform 0.3s ease;
 }
 
 .card:hover .card-img {
-    transform: scale(1.1);
+    transform: scale(1.12) rotate(2deg);
 }
 
-/* Цветовые темы карточек (пастельные как в образце) */
-.c1 { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); }
+/* Цвета только для кружков с номерами */
 .c1 .number { background: #66bb6a; }
 .c1 .russian { color: #2e7d32; }
 
-.c2 { background: linear-gradient(135deg, #e3f2fd, #e8eaf6); }
-.c2 .number { background: #42a5f5; }
-.c2 .russian { color: #1565c0; }
+.c2 .number { background: #ef5350; }
+.c2 .russian { color: #c62828; }
 
-.c3 { background: linear-gradient(135deg, #fff3e0, #fbe9e7); }
 .c3 .number { background: #ff9800; }
 .c3 .russian { color: #e65100; }
 
-.c4 { background: linear-gradient(135deg, #f3e5f5, #fce4ec); }
 .c4 .number { background: #ab47bc; }
 .c4 .russian { color: #6a1b9a; }
 
-.c5 { background: linear-gradient(135deg, #fffde7, #fff9c4); }
-.c5 .number { background: #fbc02d; }
-.c5 .russian { color: #f57f17; }
+.c5 .number { background: #29b6f6; }
+.c5 .russian { color: #0277bd; }
 
-.c6 { background: linear-gradient(135deg, #e0f2f1, #e8f5e9); }
-.c6 .number { background: #26a69a; }
-.c6 .russian { color: #00695c; }
+.c6 .number { background: #fbc02d; }
+.c6 .russian { color: #f57f17; }
 
-.c7 { background: linear-gradient(135deg, #fbe9e7, #ffccbc); }
 .c7 .number { background: #ff7043; }
 .c7 .russian { color: #d84315; }
 
-.c8 { background: linear-gradient(135deg, #e8eaf6, #c5cae9); }
 .c8 .number { background: #5c6bc0; }
 .c8 .russian { color: #283593; }
 
-.c9 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
 .c9 .number { background: #ec407a; }
 .c9 .russian { color: #ad1457; }
 
-.c10 { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
 .c10 .number { background: #ffa726; }
 .c10 .russian { color: #e65100; }
 
-.c11 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
 .c11 .number { background: #43a047; }
 .c11 .russian { color: #1b5e20; }
 
-.c12 { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
 .c12 .number { background: #1e88e5; }
 .c12 .russian { color: #0d47a1; }
 
-.c13 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
 .c13 .number { background: #fb8c00; }
 .c13 .russian { color: #bf360c; }
 
-.c14 { background: linear-gradient(135deg, #ede7f6, #d1c4e9); }
 .c14 .number { background: #7e57c2; }
 .c14 .russian { color: #4527a0; }
 
-.c15 { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); }
 .c15 .number { background: #00acc1; }
 .c15 .russian { color: #006064; }
 
-.c16 { background: linear-gradient(135deg, #fff8e1, #ffe082); }
 .c16 .number { background: #ffb300; }
 .c16 .russian { color: #e65100; }
 
-/* Пагинация */
 .pagination {
     display: flex;
     justify-content: center;
@@ -334,7 +313,6 @@ body {
     cursor: not-allowed;
 }
 
-/* Декор внизу */
 .footer-decor {
     text-align: center;
     font-size: 1.2em;
@@ -346,7 +324,6 @@ body {
 </head>
 <body>
 
-<!-- Декоративное облачко -->
 <div class="cloud">☁️</div>
 
 <div class="header">
@@ -360,7 +337,7 @@ body {
 
 <div class="controls">
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇺 Русские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
@@ -371,7 +348,7 @@ body {
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
-<div class="footer-decor">🌸  🌼 🐰 </div>
+<div class="footer-decor">🌸  🐰</div>
 
 <script>
 const words = [
@@ -394,7 +371,7 @@ const words = [
 ];
 
 const imgPath = './img/';
-const cardsPerPage = 8; // 8 карточек на странице (4 ряда × 2 колонки)
+const cardsPerPage = 8;
 let currentPage = 0;
 let currentWords = [...words];
 const totalPages = Math.ceil(currentWords.length / cardsPerPage);
