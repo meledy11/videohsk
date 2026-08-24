@@ -13,7 +13,7 @@ body {
     font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
     height: 100vh;
     overflow: hidden;
-    background: linear-gradient(135deg, #fef9f3 0%, #fff5eb 50%, #ffe8d6 100%);
+    background: #FFFEF5; /* Цвет слоновой кости - очень светлый */
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -144,7 +144,7 @@ body {
     overflow: hidden;
 }
 
-/* БЕЛЫЕ КАРТОЧКИ - картинки сливаются с фоном */
+/* Белые карточки на фоне слоновой кости */
 .card {
     border-radius: 16px;
     padding: 8px;
@@ -154,21 +154,20 @@ body {
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
-    background: white; /* Белый фон карточки */
+    background: white;
     border: 2px solid transparent;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
     overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 
-/* Подсветка при нажатии */
 .card.playing {
     border: 3px solid #ff69b4;
-    box-shadow: 0 0 0 4px rgba(255,105,180,0.2), 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 0 4px rgba(255,105,180,0.2), 0 6px 15px rgba(0,0,0,0.08);
     animation: pulse 0.5s ease;
 }
 
@@ -177,7 +176,6 @@ body {
     50% { transform: scale(1.03); }
 }
 
-/* Картинка сверху */
 .card-img {
     width: 100%;
     height: 55%;
@@ -190,7 +188,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Текст снизу */
 .text-block {
     width: 100%;
     display: flex;
@@ -384,14 +381,14 @@ body {
 
 <div class="controls">
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷 Русские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">️ Назад</button>
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
