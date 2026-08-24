@@ -222,7 +222,7 @@ const words = [
     { cn:'复杂', py:'fù zá', ru:'сложный', em:'🧩', c:'c4', img:'img4' },
     { cn:'容易', py:'róng yì', ru:'лёгкий', em:'☁️', c:'c5', img:'img5' },
     { cn:'困难', py:'kùn nán', ru:'трудный', em:'⛰️', c:'c6', img:'img6' },
-    { cn:'热闹', py:'rè nao', ru:'оживлённый', em:'', c:'c7', img:'img7' },
+    { cn:'热闹', py:'rè nao', ru:'оживлённый', em:'🎆', c:'c7', img:'img7' },
     { cn:'安静', py:'ān jìng', ru:'тихий', em:'📚', c:'c8', img:'img8' },
     { cn:'便宜', py:'pián yi', ru:'дешёвый', em:'💰', c:'c9', img:'img9' },
     { cn:'昂贵', py:'áng guì', ru:'дорогой', em:'💎', c:'c10', img:'img10' },
@@ -231,30 +231,30 @@ const words = [
     { cn:'开心', py:'kāi xīn', ru:'счастливый', em:'🌸', c:'c13', img:'img13' },
     { cn:'难过', py:'nán guò', ru:'грустный', em:'😢', c:'c14', img:'img14' },
     { cn:'开始', py:'kāi shǐ', ru:'начать', em:'🟢', c:'c15', img:'img15' },
-    { cn:'结束', py:'jié shù', ru:'закончить', em:'⏹️', c:'c16', img:'img16' }
+    { cn:'结束', py:'jié shù', ru:'закончить', em:'️', c:'c16', img:'img16' }
 ];
 
-// ССЫЛКИ НА КАРТИНКИ С GITHUB
-// Замените YOUR_USERNAME на ваше имя пользователя GitHub
-const githubUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/your-repo/main/';
+// ССЫЛКИ НА КАРТИНКИ С GITHUB (папка img)
+// Замените YOUR_USERNAME и your-repo на ваши данные
+const githubUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/your-repo/main/img/';
 
 const images = {
-    img1: githubUrl + 'IMG_7180',  // 安全 - безопасный
-    img2: githubUrl + 'IMG_7181',  // 危险 - опасный
-    img3: githubUrl + 'IMG_7182',  // 简单 - простой
-    img4: githubUrl + 'IMG_7183',  // 复杂 - сложный
-    img5: githubUrl + 'IMG_7184',  // 容易 - лёгкий
-    img6: githubUrl + 'IMG_7185',  // 困难 - трудный
-    img7: githubUrl + 'IMG_7186',  // 热闹 - оживлённый
-    img8: githubUrl + 'IMG_7187',  // 安静 - тихий
-    img9: githubUrl + 'IMG_7188',  // 便宜 - дешёвый
-    img10: githubUrl + 'IMG_7189', // 昂贵 - дорогой
-    img11: githubUrl + 'IMG_7190', // 成功 - успех
-    img12: githubUrl + 'IMG_7191', // 失败 - неудача
-    img13: githubUrl + 'IMG_7192', // 开心 - счастливый
-    img14: githubUrl + 'IMG_7193', // 难过 - грустный
-    img15: githubUrl + 'IMG_7194', // 开始 - начать
-    img16: githubUrl + 'IMG_7195'  // 结束 - закончить
+    img1: githubUrl + 'IMG_7180.png',
+    img2: githubUrl + 'IMG_7181.png',
+    img3: githubUrl + 'IMG_7182.png',
+    img4: githubUrl + 'IMG_7183.png',
+    img5: githubUrl + 'IMG_7184.png',
+    img6: githubUrl + 'IMG_7185.png',
+    img7: githubUrl + 'IMG_7186.png',
+    img8: githubUrl + 'IMG_7187.png',
+    img9: githubUrl + 'IMG_7188.png',
+    img10: githubUrl + 'IMG_7189.png',
+    img11: githubUrl + 'IMG_7190.png',
+    img12: githubUrl + 'IMG_7191.png',
+    img13: githubUrl + 'IMG_7192.png',
+    img14: githubUrl + 'IMG_7193.png',
+    img15: githubUrl + 'IMG_7194.png',
+    img16: githubUrl + 'IMG_7195.png'
 };
 
 let current = [...words];
@@ -269,7 +269,7 @@ function render() {
             <div class="chinese">${w.cn}</div>
             <div class="pinyin">${w.py}</div>
             <div class="russian">${w.ru}</div>
-            <span class="speaker">🔊</span>
+            <span class="speaker"></span>
         </div>
     `).join('');
 }
