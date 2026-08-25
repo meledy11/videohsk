@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Mia's Mandarin - Oops! Words 😅</title>
+<title>Mia's Mandarin - Day 2 🌙</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 
@@ -44,20 +44,19 @@ body {
 
 .header-top {
     display: inline-block;
-    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
+    background: linear-gradient(90deg, #e8d5f5, #f5e6d3);
     padding: 3px 14px;
     border-radius: 20px;
     font-size: 0.72em;
-    color: #fff;
+    color: #6b4c8a;
     font-weight: 700;
     margin-bottom: 2px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .header h1 {
     font-family: 'Caveat', cursive;
     font-size: 2.3em;
-    color: #ff6b6b;
+    color: #3d2817;
     font-weight: 700;
     position: relative;
     display: inline-block;
@@ -70,14 +69,14 @@ body {
     left: -10px;
     right: -10px;
     height: 6px;
-    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
+    background: linear-gradient(90deg, #ffb6c1, #ff69b4);
     border-radius: 4px;
     opacity: 0.6;
     z-index: -1;
 }
 
 .heart {
-    color: #ff6b6b;
+    color: #ff69b4;
     font-size: 0.6em;
     vertical-align: middle;
     margin-left: 10px;
@@ -98,7 +97,7 @@ body {
 .page-badge .current {
     font-size: 1.2em;
     font-weight: 900;
-    color: #ff6b6b;
+    color: #6b4c8a;
 }
 
 .page-badge .total {
@@ -125,7 +124,7 @@ body {
     padding: 5px 11px;
     border: none;
     border-radius: 18px;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
@@ -135,6 +134,28 @@ body {
 }
 
 .btn:hover { transform: translateY(-2px); }
+
+/* Стиль для кнопки перехода на Oops */
+.oops-link {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 8px auto;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8em;
+    box-shadow: 0 3px 8px rgba(238, 156, 167, 0.4);
+    transition: all 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.oops-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 12px rgba(238, 156, 167, 0.6);
+}
 
 .grid {
     flex: 1;
@@ -166,8 +187,8 @@ body {
 }
 
 .card.playing {
-    border: 2.5px solid #ff6b6b;
-    box-shadow: 0 0 0 3px rgba(255,107,107,0.2), 0 4px 12px rgba(0,0,0,0.1);
+    border: 2.5px solid #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255,105,180,0.2), 0 4px 12px rgba(0,0,0,0.1);
     animation: pulse 0.5s ease;
 }
 
@@ -239,19 +260,22 @@ body {
     margin-top: 2px;
 }
 
-.c1 .number { background: #ff6b6b; } .c1 .russian { color: #ff6b6b; }
-.c2 .number { background: #4ecdc4; } .c2 .russian { color: #4ecdc4; }
-.c3 .number { background: #f4b942; } .c3 .russian { color: #f4b942; }
-.c4 .number { background: #3d9970; } .c4 .russian { color: #3d9970; }
-.c5 .number { background: #fd79a8; } .c5 .russian { color: #fd79a8; }
-.c6 .number { background: #e17055; } .c6 .russian { color: #e17055; }
-.c7 .number { background: #6c5ce7; } .c7 .russian { color: #6c5ce7; }
-.c8 .number { background: #00b894; } .c8 .russian { color: #00b894; }
-.c9 .number { background: #e17055; } .c9 .russian { color: #e17055; }
-.c10 .number { background: #0984e3; } .c10 .russian { color: #0984e3; }
-.c11 .number { background: #d63031; } .c11 .russian { color: #d63031; }
-.c12 .number { background: #e84393; } .c12 .russian { color: #e84393; }
-.c13 .number { background: #2d3436; } .c13 .russian { color: #2d3436; }
+.c1 .number { background: #66bb6a; } .c1 .russian { color: #2e7d32; }
+.c2 .number { background: #ef5350; } .c2 .russian { color: #c62828; }
+.c3 .number { background: #ff9800; } .c3 .russian { color: #e65100; }
+.c4 .number { background: #ab47bc; } .c4 .russian { color: #6a1b9a; }
+.c5 .number { background: #29b6f6; } .c5 .russian { color: #0277bd; }
+.c6 .number { background: #fbc02d; } .c6 .russian { color: #f57f17; }
+.c7 .number { background: #ff7043; } .c7 .russian { color: #d84315; }
+.c8 .number { background: #5c6bc0; } .c8 .russian { color: #283593; }
+.c9 .number { background: #ec407a; } .c9 .russian { color: #ad1457; }
+.c10 .number { background: #ffa726; } .c10 .russian { color: #e65100; }
+.c11 .number { background: #43a047; } .c11 .russian { color: #1b5e20; }
+.c12 .number { background: #1e88e5; } .c12 .russian { color: #0d47a1; }
+.c13 .number { background: #fb8c00; } .c13 .russian { color: #bf360c; }
+.c14 .number { background: #7e57c2; } .c14 .russian { color: #4527a0; }
+.c15 .number { background: #00acc1; } .c15 .russian { color: #006064; }
+.c16 .number { background: #ffb300; } .c16 .russian { color: #e65100; }
 
 .pagination {
     display: flex;
@@ -277,7 +301,7 @@ body {
 }
 
 .page-btn:hover:not(:disabled) {
-    background: #ffdde1;
+    background: #fed6e3;
     transform: translateY(-2px);
 }
 
@@ -295,6 +319,7 @@ body {
     .russian { font-size: 0.9em; }
     .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
     .header h1 { font-size: 2em; }
+    .oops-link { font-size: 0.75em; padding: 5px 14px; }
 }
 
 @media (max-width: 400px) {
@@ -309,8 +334,8 @@ body {
 <div class="cloud">☁️</div>
 
 <div class="header">
-    <div class="header-top">🌟 Oops! Words - Daily Accidents</div>
-    <h1>Oops! 😅 <span class="heart">💫</span></h1>
+    <div class="header-top">⭐ HSK6 人物性格情感词汇</div>
+    <h1>Day 2 <span class="heart">💗</span></h1>
     <div class="page-badge">
         <span class="total" id="pageTotal">1/2</span>
         <div class="current" id="pageCurrent">01</div>
@@ -323,6 +348,9 @@ body {
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
+<!-- Кнопка перехода на Oops! Words -->
+<a href="oops.html" class="oops-link">😅 Перейти к Oops! Words</a>
+
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
@@ -332,23 +360,26 @@ body {
 
 <script>
 const words = [
-    { cn:'弄洒', py:'nòng sǎ', ru:'пролить', c:'c1', img:'IMG_7200.png' },
-    { cn:'掉落', py:'diào luò', ru:'уронить', c:'c2', img:'IMG_7201.png' },
-    { cn:'弄坏', py:'nòng huài', ru:'разбить', c:'c3', img:'IMG_7202.png' },
-    { cn:'撞到', py:'zhuàng dào', ru:'удариться', c:'c4', img:'IMG_7203.png' },
-    { cn:'卡住了', py:'kǎ zhù le', ru:'застрять', c:'c5', img:'IMG_7204.png' },
-    { cn:'丢了', py:'diū le', ru:'потерять', c:'c6', img:'IMG_7205.png' },
-    { cn:'撕破', py:'sī pò', ru:'порвать', c:'c7', img:'IMG_7206.png' },
-    { cn:'湿了', py:'shī le', ru:'промокнуть', c:'c8', img:'IMG_7207.png' },
-    { cn:'脏了', py:'zāng le', ru:'испачкаться', c:'c9', img:'IMG_7208.png' },
-    { cn:'滑倒', py:'huá dǎo', ru:'поскользнуться', c:'c10', img:'IMG_7209.png' },
-    { cn:'绊倒', py:'bàn dǎo', ru:'споткнуться', c:'c11', img:'IMG_7210.png' },
-    { cn:'坏了', py:'huài le', ru:'сломанный', c:'c12', img:'IMG_7211.png' },
-    { cn:'裂开', py:'liè kāi', ru:'треснуть', c:'c13', img:'IMG_7212.png' }
+    { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
+    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
+    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
+    { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
+    { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
+    { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7184.png' },
+    { cn:'热闹', py:'rè nao', ru:'оживлённый', c:'c7', img:'IMG_7185.png' },
+    { cn:'安静', py:'ān jìng', ru:'тихий', c:'c8', img:'IMG_7186.png' },
+    { cn:'便宜', py:'pián yi', ru:'дешёвый', c:'c9', img:'IMG_7187.png' },
+    { cn:'昂贵', py:'áng guì', ru:'дорогой', c:'c10', img:'IMG_7188.png' },
+    { cn:'成功', py:'chéng gōng', ru:'успех', c:'c11', img:'IMG_7189.png' },
+    { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7190.png' },
+    { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7191.png' },
+    { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7192.png' },
+    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7193.png' },
+    { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
 const imgPath = './img/';
-const cardsPerPage = 7;
+const cardsPerPage = 8;
 let currentPage = 0;
 let currentWords = [...words];
 const totalPages = Math.ceil(currentWords.length / cardsPerPage);
@@ -436,9 +467,7 @@ function speakCurrentPage(lang) {
                 setTimeout(() => card.classList.remove('playing'), 1200);
             }
             const word = currentWords[i];
-            const text = lang === 'cn' ? word.cn : word.ru;
-            const langCode = lang === 'cn' ? 'zh-CN' : 'ru-RU';
-            speak(text, langCode);
+            speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
         }, delay);
         delay += 1800;
     }
