@@ -1,1 +1,458 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mia's Mandarin - Oops! Words 😅</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: #F0EBE0;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    position: relative;
+}
+
+.cloud {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    font-size: 1.8em;
+    opacity: 0.7;
+    animation: float 4s ease-in-out infinite;
+    z-index: 100;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.header {
+    text-align: center;
+    padding: 4px 0 6px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.header-top {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 0.72em;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.3em;
+    color: #ff6b6b;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: -10px;
+    right: -10px;
+    height: 6px;
+    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
+    border-radius: 4px;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.heart {
+    color: #ff6b6b;
+    font-size: 0.6em;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.page-badge {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: #FFFEF5;
+    border: 2px dashed #ffb6c1;
+    border-radius: 12px;
+    padding: 4px 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.page-badge .current {
+    font-size: 1.2em;
+    font-weight: 900;
+    color: #ff6b6b;
+}
+
+.page-badge .total {
+    font-size: 0.7em;
+    color: #999;
+    position: absolute;
+    top: -6px;
+    right: -3px;
+    background: #e0e0e0;
+    padding: 1px 6px;
+    border-radius: 8px;
+}
+
+.controls {
+    display: flex;
+    gap: 7px;
+    justify-content: center;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 5px 11px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: #5a3e2b;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.72em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 14px;
+    padding: 6px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    background: #FFFEF5;
+    border: 1px solid #EDE8DD;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    overflow: visible;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card.playing {
+    border: 2.5px solid #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(255,107,107,0.2), 0 4px 12px rgba(0,0,0,0.1);
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+.card-img {
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.text-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2px 0 0 0;
+    position: relative;
+    flex: 1;
+}
+
+.number {
+    position: absolute;
+    top: -14px;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 800;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.chinese {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: #2d2d2d;
+    line-height: 1;
+    margin-top: 10px;
+}
+
+.pinyin {
+    font-size: 0.8em;
+    color: #666;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-top: 2px;
+}
+
+.russian {
+    font-size: 1em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-top: 2px;
+}
+
+.c1 .number { background: #ff6b6b; } .c1 .russian { color: #ff6b6b; }
+.c2 .number { background: #4ecdc4; } .c2 .russian { color: #4ecdc4; }
+.c3 .number { background: #f4b942; } .c3 .russian { color: #f4b942; }
+.c4 .number { background: #3d9970; } .c4 .russian { color: #3d9970; }
+.c5 .number { background: #fd79a8; } .c5 .russian { color: #fd79a8; }
+.c6 .number { background: #e17055; } .c6 .russian { color: #e17055; }
+.c7 .number { background: #6c5ce7; } .c7 .russian { color: #6c5ce7; }
+.c8 .number { background: #00b894; } .c8 .russian { color: #00b894; }
+.c9 .number { background: #e17055; } .c9 .russian { color: #e17055; }
+.c10 .number { background: #0984e3; } .c10 .russian { color: #0984e3; }
+.c11 .number { background: #d63031; } .c11 .russian { color: #d63031; }
+.c12 .number { background: #e84393; } .c12 .russian { color: #e84393; }
+.c13 .number { background: #2d3436; } .c13 .russian { color: #2d3436; }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    padding: 5px 0 2px;
+}
+
+.page-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 18px;
+    background: #FFFEF5;
+    color: #5a3e2b;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    font-size: 0.8em;
+    border: 1px solid #EDE8DD;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: #ffdde1;
+    transform: translateY(-2px);
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .grid { gap: 5px; }
+    .card { padding: 5px; }
+    .card-img { height: 48%; }
+    .chinese { font-size: 1.6em; }
+    .pinyin { font-size: 0.75em; }
+    .russian { font-size: 0.9em; }
+    .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
+    .header h1 { font-size: 2em; }
+}
+
+@media (max-width: 400px) {
+    .chinese { font-size: 1.4em; }
+    .russian { font-size: 0.85em; }
+    .card-img { height: 45%; }
+}
+</style>
+</head>
+<body>
+
+<div class="cloud">☁️</div>
+
+<div class="header">
+    <div class="header-top">🌟 Oops! Words - Daily Accidents</div>
+    <h1>Oops! 😅 <span class="heart">💫</span></h1>
+    <div class="page-badge">
+        <span class="total" id="pageTotal">1/2</span>
+        <div class="current" id="pageCurrent">01</div>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
+    <button class="btn" onclick="shuffle()">🔀 Микс</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="pagination">
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
+    <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
+</div>
+
+<script>
+const words = [
+    { cn:'弄洒', py:'nòng sǎ', ru:'пролить', c:'c1', img:'IMG_7200.png' },
+    { cn:'掉落', py:'diào luò', ru:'уронить', c:'c2', img:'IMG_7201.png' },
+    { cn:'弄坏', py:'nòng huài', ru:'разбить', c:'c3', img:'IMG_7202.png' },
+    { cn:'撞到', py:'zhuàng dào', ru:'удариться', c:'c4', img:'IMG_7203.png' },
+    { cn:'卡住了', py:'kǎ zhù le', ru:'застрять', c:'c5', img:'IMG_7204.png' },
+    { cn:'丢了', py:'diū le', ru:'потерять', c:'c6', img:'IMG_7205.png' },
+    { cn:'撕破', py:'sī pò', ru:'порвать', c:'c7', img:'IMG_7206.png' },
+    { cn:'湿了', py:'shī le', ru:'промокнуть', c:'c8', img:'IMG_7207.png' },
+    { cn:'脏了', py:'zāng le', ru:'испачкаться', c:'c9', img:'IMG_7208.png' },
+    { cn:'滑倒', py:'huá dǎo', ru:'поскользнуться', c:'c10', img:'IMG_7209.png' },
+    { cn:'绊倒', py:'bàn dǎo', ru:'споткнуться', c:'c11', img:'IMG_7210.png' },
+    { cn:'坏了', py:'huài le', ru:'сломанный', c:'c12', img:'IMG_7211.png' },
+    { cn:'裂开', py:'liè kāi', ru:'треснуть', c:'c13', img:'IMG_7212.png' }
+];
+
+const imgPath = './img/';
+const cardsPerPage = 7;
+let currentPage = 0;
+let currentWords = [...words];
+const totalPages = Math.ceil(currentWords.length / cardsPerPage);
+
+function render() {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    
+    const start = currentPage * cardsPerPage;
+    const end = start + cardsPerPage;
+    const pageWords = currentWords.slice(start, end);
+    
+    pageWords.forEach((word, index) => {
+        const globalIndex = start + index;
+        const card = document.createElement('div');
+        card.className = `card ${word.c}`;
+        card.id = `card-${globalIndex}`;
+        card.onclick = () => speakCard(globalIndex);
+        
+        card.innerHTML = `
+            <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
+            <div class="text-block">
+                <div class="number">${globalIndex + 1}</div>
+                <div class="chinese">${word.cn}</div>
+                <div class="pinyin">${word.py}</div>
+                <div class="russian">${word.ru}</div>
+            </div>
+        `;
+        
+        grid.appendChild(card);
+    });
+    
+    updatePagination();
+}
+
+function updatePagination() {
+    document.getElementById('pageCurrent').textContent = String(currentPage + 1).padStart(2, '0');
+    document.getElementById('pageTotal').textContent = `${currentPage + 1}/${totalPages}`;
+    document.getElementById('prevBtn').disabled = currentPage === 0;
+    document.getElementById('nextBtn').disabled = currentPage === totalPages - 1;
+}
+
+function changePage(direction) {
+    const newPage = currentPage + direction;
+    if (newPage >= 0 && newPage < totalPages) {
+        currentPage = newPage;
+        render();
+    }
+}
+
+function speak(text, lang) {
+    if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.85;
+        utterance.pitch = 1.05;
+        speechSynthesis.speak(utterance);
+    }
+}
+
+function speakCard(index) {
+    const word = currentWords[index];
+    const card = document.getElementById(`card-${index}`);
+    
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
+    card.classList.add('playing');
+    setTimeout(() => card.classList.remove('playing'), 1500);
+    
+    speak(word.cn, 'zh-CN');
+    setTimeout(() => speak(word.ru, 'ru-RU'), 1100);
+}
+
+function speakCurrentPage(lang) {
+    const start = currentPage * cardsPerPage;
+    const end = Math.min(start + cardsPerPage, currentWords.length);
+    let delay = 0;
+    
+    for (let i = start; i < end; i++) {
+        setTimeout(() => {
+            const card = document.getElementById(`card-${i}`);
+            if (card) {
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
+                card.classList.add('playing');
+                setTimeout(() => card.classList.remove('playing'), 1200);
+            }
+            const word = currentWords[i];
+            const text = lang === 'cn' ? word.cn : word.ru;
+            const langCode = lang === 'cn' ? 'zh-CN' : 'ru-RU';
+            speak(text, langCode);
+        }, delay);
+        delay += 1800;
+    }
+}
+
+function shuffle() {
+    currentWords.sort(() => Math.random() - 0.5);
+    currentPage = 0;
+    render();
+}
+
+render();
+</script>
+</body>
+</html>
+
 
