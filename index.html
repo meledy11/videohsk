@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Mia's Mandarin - Day 2 🌙</title>
+<title>Mia's Mandarin - Словарь 🌙</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 
@@ -82,6 +82,35 @@ body {
     margin-left: 10px;
 }
 
+/* Переключатель тем */
+.topic-switcher {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 6px 0;
+    flex-shrink: 0;
+}
+
+.topic-btn {
+    padding: 6px 14px;
+    border: 2px solid #EDE8DD;
+    border-radius: 20px;
+    background: #FFFEF5;
+    color: #6b4c8a;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.75em;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.topic-btn.active {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    border-color: #ffb6c1;
+    color: #5a3e2b;
+    box-shadow: 0 3px 8px rgba(255,182,193,0.4);
+}
+
 .page-badge {
     position: absolute;
     top: 4px;
@@ -135,7 +164,6 @@ body {
 
 .btn:hover { transform: translateY(-2px); }
 
-/* Кнопка перехода на Oops */
 .oops-link {
     display: block;
     width: fit-content;
@@ -334,12 +362,18 @@ body {
 <div class="cloud">☁️</div>
 
 <div class="header">
-    <div class="header-top">⭐ HSK6 人物性格情感词汇</div>
-    <h1>Day 2 <span class="heart">💗</span></h1>
+    <div class="header-top" id="topicTitle">⭐ HSK6 人物性格情感词汇</div>
+    <h1>Словарь <span class="heart">💗</span></h1>
     <div class="page-badge">
         <span class="total" id="pageTotal">1/2</span>
         <div class="current" id="pageCurrent">01</div>
     </div>
+</div>
+
+<!-- Переключатель тем -->
+<div class="topic-switcher">
+    <button class="topic-btn active" onclick="switchTopic(0)"> Характер</button>
+    <button class="topic-btn" onclick="switchTopic(1)">🏃 Глаголы</button>
 </div>
 
 <div class="controls">
@@ -348,7 +382,6 @@ body {
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
-<!-- Кнопка перехода на Oops! Words -->
 <a href="oops.html" class="oops-link">😅 Oops! Words — Бытовые неудачи</a>
 
 <div class="grid" id="grid"></div>
@@ -359,10 +392,11 @@ body {
 </div>
 
 <script>
-const words = [
+// Тема 1: HSK6 Характер и эмоции
+const wordsTopic1 = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
-    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
+    { cn:'简单', py:'jin dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
     { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
     { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
     { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7184.png' },
@@ -378,11 +412,54 @@ const words = [
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
+// Тема 2: Глаголы действия
+const wordsTopic2 = [
+    { cn:'走路', py:'zǒulù', ru:'идти', c:'c1', img:'IMG_7216.png' },
+    { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
+    { cn:'游泳', py:'yóuyǒng', ru:'плавать', c:'c3', img:'IMG_7218.png' },
+    { cn:'吃饭', py:'chīfàn', ru:'есть', c:'c4', img:'IMG_7219.png' },
+    { cn:'喝水', py:'hēshuǐ', ru:'пить', c:'c5', img:'IMG_7220.png' },
+    { cn:'看书', py:'kànshū', ru:'читать', c:'c6', img:'IMG_7221.png' },
+    { cn:'写字', py:'xiězì', ru:'писать', c:'c7', img:'IMG_7222.png' },
+    { cn:'听音乐', py:'tīng yīnyuè', ru:'слушать', c:'c8', img:'IMG_7223.png' },
+    { cn:'说话', py:'shuōhuà', ru:'говорить', c:'c9', img:'IMG_7224.png' },
+    { cn:'睡觉', py:'shuìjiào', ru:'спать', c:'c10', img:'IMG_7225.png' },
+    { cn:'做饭', py:'zuòfàn', ru:'готовить', c:'c11', img:'IMG_7226.png' },
+    { cn:'开车', py:'kāichē', ru:'водить', c:'c12', img:'IMG_7227.png' },
+    { cn:'唱歌', py:'chànggē', ru:'петь', c:'c13', img:'IMG_7228.png' },
+    { cn:'跳舞', py:'tiàowǔ', ru:'танцевать', c:'c14', img:'IMG_7229.png' },
+    { cn:'学习', py:'xuéxí', ru:'учиться', c:'c15', img:'IMG_7230.png' },
+    { cn:'工作', py:'gōngzuò', ru:'работать', c:'c16', img:'IMG_7231.png' },
+    { cn:'运动', py:'yùndòng', ru:'спорт', c:'c1', img:'IMG_7232.png' },
+    { cn:'休息', py:'xiūxi', ru:'отдыхать', c:'c2', img:'IMG_7233.png' }
+];
+
+const topics = [
+    { name: '⭐ HSK6 人物性格情感词汇', words: wordsTopic1 },
+    { name: '🏃 Глаголы действия', words: wordsTopic2 }
+];
+
 const imgPath = './img/';
 const cardsPerPage = 8;
+let currentTopic = 0;
 let currentPage = 0;
-let currentWords = [...words];
-const totalPages = Math.ceil(currentWords.length / cardsPerPage);
+let currentWords = [...topics[0].words];
+let totalPages = Math.ceil(currentWords.length / cardsPerPage);
+
+function switchTopic(topicIndex) {
+    currentTopic = topicIndex;
+    currentWords = [...topics[topicIndex].words];
+    currentPage = 0;
+    totalPages = Math.ceil(currentWords.length / cardsPerPage);
+    document.getElementById('topicTitle').textContent = topics[topicIndex].name;
+    
+    // Обновляем активную кнопку
+    document.querySelectorAll('.topic-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === topicIndex);
+    });
+    
+    render();
+}
 
 function render() {
     const grid = document.getElementById('grid');
