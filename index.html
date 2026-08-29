@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Mia's Mandarin - Словарь </title>
+<title>Mia's Mandarin - Словарь 🌙</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 
@@ -133,8 +133,8 @@ body {
 .grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 5px;
     min-height: 0;
     overflow: hidden;
@@ -189,28 +189,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1px 0 0 0;
+    padding: 2px 0 0 0;
     position: relative;
     flex: 1;
     overflow: hidden;
-}
-
-.number {
-    position: absolute;
-    top: -10px;
-    left: 0;
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
-    border-radius: 50%;
-    color: white;
-    font-weight: 800;
-    font-size: 0.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    z-index: 2;
 }
 
 .chinese {
@@ -218,7 +200,7 @@ body {
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .pinyin {
@@ -236,22 +218,22 @@ body {
     margin-top: 1px;
 }
 
-.c1 .number { background: #66bb6a; } .c1 .russian { color: #2e7d32; }
-.c2 .number { background: #ef5350; } .c2 .russian { color: #c62828; }
-.c3 .number { background: #ff9800; } .c3 .russian { color: #e65100; }
-.c4 .number { background: #ab47bc; } .c4 .russian { color: #6a1b9a; }
-.c5 .number { background: #29b6f6; } .c5 .russian { color: #0277bd; }
-.c6 .number { background: #fbc02d; } .c6 .russian { color: #f57f17; }
-.c7 .number { background: #ff7043; } .c7 .russian { color: #d84315; }
-.c8 .number { background: #5c6bc0; } .c8 .russian { color: #283593; }
-.c9 .number { background: #ec407a; } .c9 .russian { color: #ad1457; }
-.c10 .number { background: #ffa726; } .c10 .russian { color: #e65100; }
-.c11 .number { background: #43a047; } .c11 .russian { color: #1b5e20; }
-.c12 .number { background: #1e88e5; } .c12 .russian { color: #0d47a1; }
-.c13 .number { background: #fb8c00; } .c13 .russian { color: #bf360c; }
-.c14 .number { background: #7e57c2; } .c14 .russian { color: #4527a0; }
-.c15 .number { background: #00acc1; } .c15 .russian { color: #006064; }
-.c16 .number { background: #ffb300; } .c16 .russian { color: #e65100; }
+.c1 .chinese { color: #2e7d32; } .c1 .russian { color: #2e7d32; }
+.c2 .chinese { color: #c62828; } .c2 .russian { color: #c62828; }
+.c3 .chinese { color: #e65100; } .c3 .russian { color: #e65100; }
+.c4 .chinese { color: #6a1b9a; } .c4 .russian { color: #6a1b9a; }
+.c5 .chinese { color: #0277bd; } .c5 .russian { color: #0277bd; }
+.c6 .chinese { color: #f57f17; } .c6 .russian { color: #f57f17; }
+.c7 .chinese { color: #d84315; } .c7 .russian { color: #d84315; }
+.c8 .chinese { color: #283593; } .c8 .russian { color: #283593; }
+.c9 .chinese { color: #ad1457; } .c9 .russian { color: #ad1457; }
+.c10 .chinese { color: #e65100; } .c10 .russian { color: #e65100; }
+.c11 .chinese { color: #1b5e20; } .c11 .russian { color: #1b5e20; }
+.c12 .chinese { color: #0d47a1; } .c12 .russian { color: #0d47a1; }
+.c13 .chinese { color: #bf360c; } .c13 .russian { color: #bf360c; }
+.c14 .chinese { color: #4527a0; } .c14 .russian { color: #4527a0; }
+.c15 .chinese { color: #006064; } .c15 .russian { color: #006064; }
+.c16 .chinese { color: #e65100; } .c16 .russian { color: #e65100; }
 
 .pagination {
     display: flex;
@@ -290,17 +272,16 @@ body {
     .grid { gap: 4px; }
     .card { padding: 3px; }
     .card-img { height: 53%; }
-    .chinese { font-size: 1.4em; }
+    .chinese { font-size: 1.3em; }
     .pinyin { font-size: 0.65em; }
     .russian { font-size: 0.8em; }
-    .number { width: 22px; height: 22px; min-width: 22px; font-size: 0.7em; top: -8px; }
     .topic-btn { font-size: 0.6em; padding: 3px 8px; }
     .btn { font-size: 0.6em; padding: 3px 8px; }
     .oops-link { font-size: 0.6em; padding: 3px 8px; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.25em; }
+    .chinese { font-size: 1.2em; }
     .russian { font-size: 0.75em; }
     .card-img { height: 52%; }
     .top-bar { gap: 4px; }
@@ -314,7 +295,7 @@ body {
 <div class="top-bar">
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
-    <button class="btn" onclick="speakCurrentPage('cn')">🇨</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
     <a href="oops.html" class="oops-link">Oops!</a>
@@ -378,7 +359,7 @@ const topics = [
 ];
 
 const imgPath = './img/';
-const cardsPerPage = 8;
+const cardsPerPage = 9;
 let currentTopic = 0;
 let currentPage = 0;
 let currentWords = [...topics[0].words];
@@ -415,7 +396,6 @@ function render() {
         card.innerHTML = `
             <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
             <div class="text-block">
-                <div class="number">${globalIndex + 1}</div>
                 <div class="chinese">${word.cn}</div>
                 <div class="pinyin">${word.py}</div>
                 <div class="russian">${word.ru}</div>
