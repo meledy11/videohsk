@@ -41,74 +41,9 @@ body {
     padding: 2px 0 4px;
     flex-shrink: 0;
     position: relative;
-}
-
-.header-top {
-    display: inline-block;
-    background: linear-gradient(90deg, #e8d5f5, #f5e6d3);
-    padding: 2px 12px;
-    border-radius: 20px;
-    font-size: 0.65em;
-    color: #6b4c8a;
-    font-weight: 700;
-    margin-bottom: 1px;
-}
-
-.header h1 {
-    font-family: 'Caveat', cursive;
-    font-size: 2em;
-    color: #3d2817;
-    font-weight: 700;
-    position: relative;
-    display: inline-block;
-}
-
-.header h1::after {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: -10px;
-    right: -10px;
-    height: 6px;
-    background: linear-gradient(90deg, #ffb6c1, #ff69b4);
-    border-radius: 4px;
-    opacity: 0.6;
-    z-index: -1;
-}
-
-.heart {
-    color: #ff69b4;
-    font-size: 0.6em;
-    vertical-align: middle;
-    margin-left: 10px;
-}
-
-.topic-switcher {
     display: flex;
-    gap: 6px;
     justify-content: center;
-    margin: 4px 0;
-    flex-shrink: 0;
-}
-
-.topic-btn {
-    padding: 4px 12px;
-    border: 2px solid #EDE8DD;
-    border-radius: 20px;
-    background: #FFFEF5;
-    color: #6b4c8a;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 0.7em;
-    transition: all 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.topic-btn.active {
-    background: linear-gradient(135deg, #a8edea, #fed6e3);
-    border-color: #ffb6c1;
-    color: #5a3e2b;
-    box-shadow: 0 3px 8px rgba(255,182,193,0.4);
+    align-items: center;
 }
 
 .page-badge {
@@ -140,6 +75,34 @@ body {
     border-radius: 8px;
 }
 
+.topic-switcher {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin: 4px 0;
+    flex-shrink: 0;
+}
+
+.topic-btn {
+    padding: 3px 10px;
+    border: 2px solid #EDE8DD;
+    border-radius: 18px;
+    background: #FFFEF5;
+    color: #6b4c8a;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.65em;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.topic-btn.active {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    border-color: #ffb6c1;
+    color: #5a3e2b;
+    box-shadow: 0 3px 8px rgba(255,182,193,0.4);
+}
+
 .controls {
     display: flex;
     gap: 5px;
@@ -150,14 +113,14 @@ body {
 }
 
 .btn {
-    padding: 4px 10px;
+    padding: 3px 9px;
     border: none;
-    border-radius: 18px;
+    border-radius: 16px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.68em;
+    font-size: 0.65em;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
@@ -168,13 +131,13 @@ body {
     display: block;
     width: fit-content;
     margin: 0 auto 4px auto;
-    padding: 4px 14px;
+    padding: 3px 12px;
     background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     color: white;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 18px;
     font-weight: 700;
-    font-size: 0.72em;
+    font-size: 0.68em;
     box-shadow: 0 3px 8px rgba(238, 156, 167, 0.4);
     transition: all 0.2s;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
@@ -189,14 +152,14 @@ body {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 5px;
+    gap: 7px;
     min-height: 0;
     overflow: hidden;
 }
 
 .card {
-    border-radius: 12px;
-    padding: 5px;
+    border-radius: 14px;
+    padding: 6px;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -227,7 +190,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 45%;
+    height: 50%;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -249,15 +212,15 @@ body {
 
 .number {
     position: absolute;
-    top: -12px;
+    top: -14px;
     left: 0;
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 0.85em;
+    font-size: 0.95em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -266,15 +229,15 @@ body {
 }
 
 .chinese {
-    font-size: 1.6em;
+    font-size: 1.8em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .pinyin {
-    font-size: 0.72em;
+    font-size: 0.8em;
     color: #666;
     font-weight: 600;
     line-height: 1.1;
@@ -282,7 +245,7 @@ body {
 }
 
 .russian {
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 800;
     line-height: 1.1;
     margin-top: 2px;
@@ -309,13 +272,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex-shrink: 0;
-    padding: 4px 0 2px;
+    padding: 5px 0 2px;
 }
 
 .page-btn {
-    padding: 5px 12px;
+    padding: 6px 14px;
     border: none;
     border-radius: 18px;
     background: #FFFEF5;
@@ -324,7 +287,7 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     transition: all 0.2s;
-    font-size: 0.75em;
+    font-size: 0.8em;
     border: 1px solid #EDE8DD;
 }
 
@@ -339,24 +302,22 @@ body {
 }
 
 @media (max-width: 600px) {
-    .grid { gap: 4px; }
-    .card { padding: 4px; }
-    .card-img { height: 42%; }
-    .chinese { font-size: 1.4em; }
-    .pinyin { font-size: 0.65em; }
-    .russian { font-size: 0.8em; }
-    .number { width: 22px; height: 22px; min-width: 22px; font-size: 0.75em; top: -10px; }
-    .header h1 { font-size: 1.8em; }
+    .grid { gap: 5px; }
+    .card { padding: 5px; }
+    .card-img { height: 48%; }
+    .chinese { font-size: 1.6em; }
+    .pinyin { font-size: 0.75em; }
+    .russian { font-size: 0.9em; }
+    .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
     .oops-link { font-size: 0.65em; padding: 3px 12px; }
-    .topic-btn { font-size: 0.65em; padding: 3px 10px; }
-    .btn { font-size: 0.62em; padding: 3px 8px; }
+    .topic-btn { font-size: 0.6em; padding: 3px 8px; }
+    .btn { font-size: 0.6em; padding: 3px 8px; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.2em; }
-    .russian { font-size: 0.75em; }
-    .card-img { height: 40%; }
-    .header-top { font-size: 0.6em; }
+    .chinese { font-size: 1.4em; }
+    .russian { font-size: 0.85em; }
+    .card-img { height: 45%; }
 }
 </style>
 </head>
@@ -365,8 +326,6 @@ body {
 <div class="cloud">☁️</div>
 
 <div class="header">
-    <div class="header-top" id="topicTitle">⭐ HSK6 人物性格情感词汇</div>
-    <h1>Словарь <span class="heart">💗</span></h1>
     <div class="page-badge">
         <span class="total" id="pageTotal">1/2</span>
         <div class="current" id="pageCurrent">01</div>
@@ -375,12 +334,12 @@ body {
 
 <div class="topic-switcher">
     <button class="topic-btn active" onclick="switchTopic(0)"> Характер</button>
-    <button class="topic-btn" onclick="switchTopic(1)">🏃 Глаголы</button>
+    <button class="topic-btn" onclick="switchTopic(1)"> Глаголы</button>
 </div>
 
 <div class="controls">
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳 Китайские</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺 Русские</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷 Русские</button>
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
@@ -396,7 +355,7 @@ body {
 <script>
 const wordsTopic1 = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
-    { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
+    { cn:'危险', py:'wēi xin', ru:'опасный', c:'c2', img:'IMG_7180.png' },
     { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
     { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
     { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
@@ -435,8 +394,8 @@ const wordsTopic2 = [
 ];
 
 const topics = [
-    { name: '⭐ HSK6 人物性格情感词汇', words: wordsTopic1 },
-    { name: '🏃 Глаголы действия', words: wordsTopic2 }
+    { words: wordsTopic1 },
+    { words: wordsTopic2 }
 ];
 
 const imgPath = './img/';
@@ -451,7 +410,6 @@ function switchTopic(topicIndex) {
     currentWords = [...topics[topicIndex].words];
     currentPage = 0;
     totalPages = Math.ceil(currentWords.length / cardsPerPage);
-    document.getElementById('topicTitle').textContent = topics[topicIndex].name;
     
     document.querySelectorAll('.topic-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === topicIndex);
