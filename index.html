@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Mia's Mandarin - Словарь 🌙</title>
+<title>Mia's Mandarin - Словарь </title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 
@@ -196,15 +196,15 @@ body {
 }
 
 .chinese {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .pinyin {
-    font-size: 0.7em;
+    font-size: 0.65em;
     color: #666;
     font-weight: 600;
     line-height: 1;
@@ -212,7 +212,7 @@ body {
 }
 
 .russian {
-    font-size: 0.85em;
+    font-size: 0.78em;
     font-weight: 800;
     line-height: 1;
     margin-top: 1px;
@@ -272,17 +272,17 @@ body {
     .grid { gap: 4px; }
     .card { padding: 3px; }
     .card-img { height: 53%; }
-    .chinese { font-size: 1.3em; }
-    .pinyin { font-size: 0.65em; }
-    .russian { font-size: 0.8em; }
+    .chinese { font-size: 1.6em; }
+    .pinyin { font-size: 0.6em; }
+    .russian { font-size: 0.72em; }
     .topic-btn { font-size: 0.6em; padding: 3px 8px; }
     .btn { font-size: 0.6em; padding: 3px 8px; }
     .oops-link { font-size: 0.6em; padding: 3px 8px; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.2em; }
-    .russian { font-size: 0.75em; }
+    .chinese { font-size: 1.4em; }
+    .russian { font-size: 0.68em; }
     .card-img { height: 52%; }
     .top-bar { gap: 4px; }
 }
@@ -290,7 +290,7 @@ body {
 </head>
 <body>
 
-<div class="cloud">☁️</div>
+<div class="cloud">️</div>
 
 <div class="top-bar">
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
@@ -308,7 +308,7 @@ body {
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">️ Назад</button>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
@@ -335,7 +335,7 @@ const wordsTopic1 = [
 const wordsTopic2 = [
     { cn:'走路', py:'zǒulù', ru:'ходить пешком', c:'c1', img:'IMG_7216.png' },
     { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
-    { cn:'游泳', py:'yóuyǒng', ru:'плавать', c:'c3', img:'IMG_7218.png' },
+    { cn:'游泳', py:'yóuyng', ru:'плавать', c:'c3', img:'IMG_7218.png' },
     { cn:'吃饭', py:'chīfàn', ru:'кушать', c:'c4', img:'IMG_7219.png' },
     { cn:'喝水', py:'hēshuǐ', ru:'пить воду', c:'c5', img:'IMG_7220.png' },
     { cn:'看书', py:'kànshū', ru:'читать книгу', c:'c6', img:'IMG_7221.png' },
@@ -372,7 +372,23 @@ const wordsTopic2 = [
     { cn:'原谅', py:'yuánliàng', ru:'прощать', c:'c5', img:'IMG_7253.png' },
     { cn:'点燃', py:'diǎnrán', ru:'зажигать', c:'c6', img:'IMG_7254.png' },
     { cn:'融化', py:'rónghuà', ru:'таять', c:'c7', img:'IMG_7255.png' },
-    { cn:'犯错', py:'fàncuò', ru:'ошибаться', c:'c8', img:'IMG_7256.png' }
+    { cn:'犯错', py:'fàncuò', ru:'ошибаться', c:'c8', img:'IMG_7256.png' },
+    { cn:'买', py:'mi', ru:'покупать', c:'c9', img:'IMG_7257.png' },
+    { cn:'穿', py:'chuān', ru:'мерить одежду', c:'c10', img:'IMG_7258.png' },
+    { cn:'洗', py:'x', ru:'стирать вещи', c:'c11', img:'IMG_7259.png' },
+    { cn:'骑', py:'qí', ru:'ездить верхом', c:'c12', img:'IMG_7260.png' },
+    { cn:'爬', py:'pá', ru:'карабкаться', c:'c13', img:'IMG_7261.png' },
+    { cn:'飞', py:'fēi', ru:'летать', c:'c14', img:'IMG_7262.png' },
+    { cn:'哭', py:'kū', ru:'плакать', c:'c15', img:'IMG_7263.png' },
+    { cn:'帮', py:'bāng', ru:'помогать', c:'c16', img:'IMG_7264.png' },
+    { cn:'等', py:'děng', ru:'ждать', c:'c1', img:'IMG_7265.png' },
+    { cn:'找', py:'zhǎo', ru:'искать', c:'c2', img:'IMG_7266.png' },
+    { cn:'送', py:'sòng', ru:'дарить подарок', c:'c3', img:'IMG_7267.png' },
+    { cn:'接', py:'jiē', ru:'встречать', c:'c4', img:'IMG_7268.png' },
+    { cn:'换', py:'huàn', ru:'обменивать вещь', c:'c5', img:'IMG_7269.png' },
+    { cn:'搬', py:'bān', ru:'переносить коробку', c:'c6', img:'IMG_7270.png' },
+    { cn:'修', py:'xiū', ru:'ремонтировать игрушку', c:'c7', img:'IMG_7271.png' },
+    { cn:'种', py:'zhòng', ru:'сажать растения', c:'c8', img:'IMG_7272.png' }
 ];
 
 const topics = [
@@ -450,7 +466,7 @@ function speak(text, lang) {
         speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
-        utterance.rate = 0.85;
+        utterance.rate = 0.7;
         utterance.pitch = 1.05;
         speechSynthesis.speak(utterance);
     }
@@ -465,7 +481,7 @@ function speakCard(index) {
     setTimeout(() => card.classList.remove('playing'), 1500);
     
     speak(word.cn, 'zh-CN');
-    setTimeout(() => speak(word.ru, 'ru-RU'), 1100);
+    setTimeout(() => speak(word.ru, 'ru-RU'), 1500);
 }
 
 function speakCurrentPage(lang) {
@@ -484,7 +500,7 @@ function speakCurrentPage(lang) {
             const word = currentWords[i];
             speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
         }, delay);
-        delay += 1800;
+        delay += 2200;
     }
 }
 
