@@ -133,8 +133,8 @@ body {
 .grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 5px;
     min-height: 0;
     overflow: hidden;
@@ -296,8 +296,8 @@ body {
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
-    <button class="btn" onclick="shuffle()"></button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷</button>
+    <button class="btn" onclick="shuffle()">🔀</button>
     <a href="oops.html" class="oops-link">Oops!</a>
     <div class="page-badge">
         <span class="total" id="pageTotal">1/2</span>
@@ -308,7 +308,7 @@ body {
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">️ Назад</button>
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
@@ -359,7 +359,7 @@ const topics = [
 ];
 
 const imgPath = './img/';
-const cardsPerPage = 9;
+const cardsPerPage = 8;
 let currentTopic = 0;
 let currentPage = 0;
 let currentWords = [...topics[0].words];
