@@ -296,7 +296,7 @@ body {
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
     <button class="btn" onclick="speakCurrentPage('cn')">🇨</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
     <a href="oops.html" class="oops-link">Oops!</a>
     <div class="page-badge">
@@ -333,32 +333,46 @@ const wordsTopic1 = [
 ];
 
 const wordsTopic2 = [
-    { cn:'走路', py:'zǒulù', ru:'идти', c:'c1', img:'IMG_7216.png' },
+    { cn:'走路', py:'zǒulù', ru:'ходить пешком', c:'c1', img:'IMG_7216.png' },
     { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
     { cn:'游泳', py:'yóuyǒng', ru:'плавать', c:'c3', img:'IMG_7218.png' },
-    { cn:'吃饭', py:'chīfàn', ru:'есть', c:'c4', img:'IMG_7219.png' },
-    { cn:'喝水', py:'hēshuǐ', ru:'пить', c:'c5', img:'IMG_7220.png' },
-    { cn:'看书', py:'kànshū', ru:'читать', c:'c6', img:'IMG_7221.png' },
+    { cn:'吃饭', py:'chīfàn', ru:'кушать', c:'c4', img:'IMG_7219.png' },
+    { cn:'喝水', py:'hēshuǐ', ru:'пить воду', c:'c5', img:'IMG_7220.png' },
+    { cn:'看书', py:'kànshū', ru:'читать книгу', c:'c6', img:'IMG_7221.png' },
     { cn:'写字', py:'xiězì', ru:'писать', c:'c7', img:'IMG_7222.png' },
-    { cn:'听音乐', py:'tīng yīnyuè', ru:'слушать', c:'c8', img:'IMG_7223.png' },
+    { cn:'听音乐', py:'tīng yīnyuè', ru:'слушать музыку', c:'c8', img:'IMG_7223.png' },
     { cn:'说话', py:'shuōhuà', ru:'говорить', c:'c9', img:'IMG_7224.png' },
     { cn:'睡觉', py:'shuìjiào', ru:'спать', c:'c10', img:'IMG_7225.png' },
-    { cn:'做饭', py:'zuòfàn', ru:'готовить', c:'c11', img:'IMG_7226.png' },
-    { cn:'开车', py:'kāichē', ru:'водить', c:'c12', img:'IMG_7227.png' },
-    { cn:'唱歌', py:'chànggē', ru:'петь', c:'c13', img:'IMG_7228.png' },
+    { cn:'做饭', py:'zuòfàn', ru:'готовить еду', c:'c11', img:'IMG_7226.png' },
+    { cn:'开车', py:'kāichē', ru:'водить машину', c:'c12', img:'IMG_7227.png' },
+    { cn:'唱歌', py:'chànggē', ru:'петь песню', c:'c13', img:'IMG_7228.png' },
     { cn:'跳舞', py:'tiàowǔ', ru:'танцевать', c:'c14', img:'IMG_7229.png' },
     { cn:'学习', py:'xuéxí', ru:'учиться', c:'c15', img:'IMG_7230.png' },
     { cn:'工作', py:'gōngzuò', ru:'работать', c:'c16', img:'IMG_7231.png' },
-    { cn:'运动', py:'yùndòng', ru:'спорт', c:'c1', img:'IMG_7232.png' },
+    { cn:'运动', py:'yùndòng', ru:'заниматься спортом', c:'c1', img:'IMG_7232.png' },
     { cn:'休息', py:'xiūxi', ru:'отдыхать', c:'c2', img:'IMG_7233.png' },
     { cn:'画画', py:'huàhuà', ru:'рисовать', c:'c3', img:'IMG_7235.png' },
     { cn:'跳', py:'tiào', ru:'прыгать', c:'c4', img:'IMG_7236.png' },
     { cn:'笑', py:'xiào', ru:'смеяться', c:'c5', img:'IMG_7237.png' },
     { cn:'拍照', py:'pāizhào', ru:'фотографировать', c:'c6', img:'IMG_7238.png' },
     { cn:'切', py:'qiē', ru:'резать', c:'c7', img:'IMG_7239.png' },
-    { cn:'做梦', py:'zuòmèng', ru:'мечтать', c:'c8', img:'IMG_7240.png' },
+    { cn:'做梦', py:'zuòmèng', ru:'видеть сон', c:'c8', img:'IMG_7240.png' },
     { cn:'建', py:'jiàn', ru:'строить', c:'c9', img:'IMG_7241.png' },
-    { cn:'抓', py:'zhuā', ru:'ловить', c:'c10', img:'IMG_7242.png' }
+    { cn:'抓', py:'zhuā', ru:'ловить', c:'c10', img:'IMG_7242.png' },
+    { cn:'卖', py:'mài', ru:'продавать', c:'c11', img:'IMG_7243.png' },
+    { cn:'寄', py:'jì', ru:'отправлять посылку', c:'c12', img:'IMG_7244.png' },
+    { cn:'亮', py:'liàng', ru:'светиться', c:'c13', img:'IMG_7245.png' },
+    { cn:'沉', py:'chén', ru:'тонуть', c:'c14', img:'IMG_7246.png' },
+    { cn:'花', py:'huā', ru:'тратить деньги', c:'c15', img:'IMG_7247.png' },
+    { cn:'站', py:'zhàn', ru:'стоять', c:'c16', img:'IMG_7248.png' },
+    { cn:'粘', py:'zhān', ru:'клеить', c:'c1', img:'IMG_7249.png' },
+    { cn:'扫', py:'sǎo', ru:'подметать', c:'c2', img:'IMG_7250.png' },
+    { cn:'禁止', py:'jìnzhǐ', ru:'запрещать', c:'c3', img:'IMG_7251.png' },
+    { cn:'预见', py:'yùjiàn', ru:'предвидеть', c:'c4', img:'IMG_7252.png' },
+    { cn:'原谅', py:'yuánliàng', ru:'прощать', c:'c5', img:'IMG_7253.png' },
+    { cn:'点燃', py:'diǎnrán', ru:'зажигать', c:'c6', img:'IMG_7254.png' },
+    { cn:'融化', py:'rónghuà', ru:'таять', c:'c7', img:'IMG_7255.png' },
+    { cn:'犯错', py:'fàncuò', ru:'ошибаться', c:'c8', img:'IMG_7256.png' }
 ];
 
 const topics = [
