@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Mia's Mandarin - Словарь 🌙</title>
+<title>Mia's Mandarin - Словарь </title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 
@@ -36,7 +36,6 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-/* Верхняя панель - всё в одну строку */
 .top-bar {
     display: flex;
     align-items: center;
@@ -131,20 +130,20 @@ body {
     box-shadow: 0 5px 12px rgba(238, 156, 167, 0.6);
 }
 
-/* Сетка карточек - занимает всё доступное место */
 .grid {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 7px;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 5px;
     min-height: 0;
-    overflow-y: auto;
-    padding: 6px 0;
+    overflow: hidden;
+    padding: 4px 0;
 }
 
 .card {
     border-radius: 14px;
-    padding: 6px;
+    padding: 4px;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -154,7 +153,7 @@ body {
     background: #FFFEF5;
     border: 1px solid #EDE8DD;
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    overflow: visible;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -175,7 +174,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 50%;
+    height: 55%;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -190,22 +189,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2px 0 0 0;
+    padding: 1px 0 0 0;
     position: relative;
     flex: 1;
+    overflow: hidden;
 }
 
 .number {
     position: absolute;
-    top: -14px;
+    top: -10px;
     left: 0;
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 0.95em;
+    font-size: 0.8em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,26 +214,26 @@ body {
 }
 
 .chinese {
-    font-size: 1.8em;
+    font-size: 1.5em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .pinyin {
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: #666;
     font-weight: 600;
-    line-height: 1.1;
-    margin-top: 2px;
+    line-height: 1;
+    margin-top: 1px;
 }
 
 .russian {
-    font-size: 1em;
+    font-size: 0.85em;
     font-weight: 800;
-    line-height: 1.1;
-    margin-top: 2px;
+    line-height: 1;
+    margin-top: 1px;
 }
 
 .c1 .number { background: #66bb6a; } .c1 .russian { color: #2e7d32; }
@@ -287,22 +287,22 @@ body {
 }
 
 @media (max-width: 600px) {
-    .grid { gap: 5px; }
-    .card { padding: 5px; }
-    .card-img { height: 48%; }
-    .chinese { font-size: 1.6em; }
-    .pinyin { font-size: 0.75em; }
-    .russian { font-size: 0.9em; }
-    .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
+    .grid { gap: 4px; }
+    .card { padding: 3px; }
+    .card-img { height: 53%; }
+    .chinese { font-size: 1.4em; }
+    .pinyin { font-size: 0.65em; }
+    .russian { font-size: 0.8em; }
+    .number { width: 22px; height: 22px; min-width: 22px; font-size: 0.7em; top: -8px; }
     .topic-btn { font-size: 0.6em; padding: 3px 8px; }
     .btn { font-size: 0.6em; padding: 3px 8px; }
     .oops-link { font-size: 0.6em; padding: 3px 8px; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.4em; }
-    .russian { font-size: 0.85em; }
-    .card-img { height: 45%; }
+    .chinese { font-size: 1.25em; }
+    .russian { font-size: 0.75em; }
+    .card-img { height: 52%; }
     .top-bar { gap: 4px; }
 }
 </style>
@@ -311,11 +311,10 @@ body {
 
 <div class="cloud">☁️</div>
 
-<!-- Всё в одну строку -->
 <div class="top-bar">
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
-    <button class="btn" onclick="speakCurrentPage('cn')">🇳</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
     <a href="oops.html" class="oops-link">Oops!</a>
@@ -328,7 +327,7 @@ body {
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">️ Назад</button>
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
@@ -348,7 +347,7 @@ const wordsTopic1 = [
     { cn:'失败', py:'shī bài', ru:'неудача', c:'c12', img:'IMG_7190.png' },
     { cn:'开心', py:'kāi xīn', ru:'счастливый', c:'c13', img:'IMG_7191.png' },
     { cn:'难过', py:'nán guò', ru:'грустный', c:'c14', img:'IMG_7192.png' },
-    { cn:'开始', py:'kāi sh', ru:'начать', c:'c15', img:'IMG_7193.png' },
+    { cn:'开始', py:'kāi shǐ', ru:'начать', c:'c15', img:'IMG_7193.png' },
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
