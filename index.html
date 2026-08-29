@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 8px;
+    padding-bottom: 8mm;
     position: relative;
 }
 
@@ -37,7 +38,7 @@ body {
 
 .header {
     text-align: center;
-    padding: 4px 0 6px;
+    padding: 2px 0 4px;
     flex-shrink: 0;
     position: relative;
 }
@@ -45,17 +46,17 @@ body {
 .header-top {
     display: inline-block;
     background: linear-gradient(90deg, #e8d5f5, #f5e6d3);
-    padding: 3px 14px;
+    padding: 2px 12px;
     border-radius: 20px;
-    font-size: 0.72em;
+    font-size: 0.65em;
     color: #6b4c8a;
     font-weight: 700;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .header h1 {
     font-family: 'Caveat', cursive;
-    font-size: 2.3em;
+    font-size: 2em;
     color: #3d2817;
     font-weight: 700;
     position: relative;
@@ -82,24 +83,23 @@ body {
     margin-left: 10px;
 }
 
-/* Переключатель тем */
 .topic-switcher {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
-    margin: 6px 0;
+    margin: 4px 0;
     flex-shrink: 0;
 }
 
 .topic-btn {
-    padding: 6px 14px;
+    padding: 4px 12px;
     border: 2px solid #EDE8DD;
     border-radius: 20px;
     background: #FFFEF5;
     color: #6b4c8a;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.75em;
+    font-size: 0.7em;
     transition: all 0.3s;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
@@ -118,22 +118,22 @@ body {
     background: #FFFEF5;
     border: 2px dashed #ffb6c1;
     border-radius: 12px;
-    padding: 4px 10px;
+    padding: 3px 8px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .page-badge .current {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 900;
     color: #6b4c8a;
 }
 
 .page-badge .total {
-    font-size: 0.7em;
+    font-size: 0.65em;
     color: #999;
     position: absolute;
-    top: -6px;
+    top: -5px;
     right: -3px;
     background: #e0e0e0;
     padding: 1px 6px;
@@ -142,22 +142,22 @@ body {
 
 .controls {
     display: flex;
-    gap: 7px;
+    gap: 5px;
     justify-content: center;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
 .btn {
-    padding: 5px 11px;
+    padding: 4px 10px;
     border: none;
     border-radius: 18px;
     background: linear-gradient(135deg, #a8edea, #fed6e3);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.72em;
+    font-size: 0.68em;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
@@ -167,14 +167,14 @@ body {
 .oops-link {
     display: block;
     width: fit-content;
-    margin: 0 auto 6px auto;
-    padding: 5px 16px;
+    margin: 0 auto 4px auto;
+    padding: 4px 14px;
     background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     color: white;
     text-decoration: none;
     border-radius: 20px;
     font-weight: 700;
-    font-size: 0.78em;
+    font-size: 0.72em;
     box-shadow: 0 3px 8px rgba(238, 156, 167, 0.4);
     transition: all 0.2s;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
@@ -189,14 +189,14 @@ body {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 7px;
+    gap: 5px;
     min-height: 0;
     overflow: hidden;
 }
 
 .card {
-    border-radius: 14px;
-    padding: 6px;
+    border-radius: 12px;
+    padding: 5px;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -227,7 +227,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 50%;
+    height: 45%;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -249,15 +249,15 @@ body {
 
 .number {
     position: absolute;
-    top: -14px;
+    top: -12px;
     left: 0;
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 0.95em;
+    font-size: 0.85em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -266,15 +266,15 @@ body {
 }
 
 .chinese {
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .pinyin {
-    font-size: 0.8em;
+    font-size: 0.72em;
     color: #666;
     font-weight: 600;
     line-height: 1.1;
@@ -282,7 +282,7 @@ body {
 }
 
 .russian {
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 800;
     line-height: 1.1;
     margin-top: 2px;
@@ -309,13 +309,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
-    padding: 5px 0 2px;
+    padding: 4px 0 2px;
 }
 
 .page-btn {
-    padding: 6px 14px;
+    padding: 5px 12px;
     border: none;
     border-radius: 18px;
     background: #FFFEF5;
@@ -324,7 +324,7 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     transition: all 0.2s;
-    font-size: 0.8em;
+    font-size: 0.75em;
     border: 1px solid #EDE8DD;
 }
 
@@ -339,21 +339,24 @@ body {
 }
 
 @media (max-width: 600px) {
-    .grid { gap: 5px; }
-    .card { padding: 5px; }
-    .card-img { height: 48%; }
-    .chinese { font-size: 1.6em; }
-    .pinyin { font-size: 0.75em; }
-    .russian { font-size: 0.9em; }
-    .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
-    .header h1 { font-size: 2em; }
-    .oops-link { font-size: 0.72em; padding: 4px 14px; }
+    .grid { gap: 4px; }
+    .card { padding: 4px; }
+    .card-img { height: 42%; }
+    .chinese { font-size: 1.4em; }
+    .pinyin { font-size: 0.65em; }
+    .russian { font-size: 0.8em; }
+    .number { width: 22px; height: 22px; min-width: 22px; font-size: 0.75em; top: -10px; }
+    .header h1 { font-size: 1.8em; }
+    .oops-link { font-size: 0.65em; padding: 3px 12px; }
+    .topic-btn { font-size: 0.65em; padding: 3px 10px; }
+    .btn { font-size: 0.62em; padding: 3px 8px; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.4em; }
-    .russian { font-size: 0.85em; }
-    .card-img { height: 45%; }
+    .chinese { font-size: 1.2em; }
+    .russian { font-size: 0.75em; }
+    .card-img { height: 40%; }
+    .header-top { font-size: 0.6em; }
 }
 </style>
 </head>
@@ -370,7 +373,6 @@ body {
     </div>
 </div>
 
-<!-- Переключатель тем -->
 <div class="topic-switcher">
     <button class="topic-btn active" onclick="switchTopic(0)"> Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">🏃 Глаголы</button>
@@ -382,7 +384,7 @@ body {
     <button class="btn" onclick="shuffle()">🔀 Микс</button>
 </div>
 
-<a href="oops.html" class="oops-link">😅 Oops! Words — Бытовые неудачи</a>
+<a href="oops.html" class="oops-link">😅 Oops! Words</a>
 
 <div class="grid" id="grid"></div>
 
@@ -392,11 +394,10 @@ body {
 </div>
 
 <script>
-// Тема 1: HSK6 Характер и эмоции
 const wordsTopic1 = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
-    { cn:'简单', py:'jin dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
+    { cn:'简单', py:'jiǎn dān', ru:'простой', c:'c3', img:'IMG_7181.png' },
     { cn:'复杂', py:'fù zá', ru:'сложный', c:'c4', img:'IMG_7182.png' },
     { cn:'容易', py:'róng yì', ru:'лёгкий', c:'c5', img:'IMG_7183.png' },
     { cn:'困难', py:'kùn nán', ru:'трудный', c:'c6', img:'IMG_7184.png' },
@@ -412,7 +413,6 @@ const wordsTopic1 = [
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
-// Тема 2: Глаголы действия
 const wordsTopic2 = [
     { cn:'走路', py:'zǒulù', ru:'идти', c:'c1', img:'IMG_7216.png' },
     { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
@@ -431,7 +431,7 @@ const wordsTopic2 = [
     { cn:'学习', py:'xuéxí', ru:'учиться', c:'c15', img:'IMG_7230.png' },
     { cn:'工作', py:'gōngzuò', ru:'работать', c:'c16', img:'IMG_7231.png' },
     { cn:'运动', py:'yùndòng', ru:'спорт', c:'c1', img:'IMG_7232.png' },
-    { cn:'休息', py:'xiūxi', ru:'отдыхать', c:'c2', img:'IMG_7233.png' }
+    { cn:'休息', py:'xiūxi', ru:'отдыхать', c:'c2', img:'IMG_7234.png' }
 ];
 
 const topics = [
@@ -453,7 +453,6 @@ function switchTopic(topicIndex) {
     totalPages = Math.ceil(currentWords.length / cardsPerPage);
     document.getElementById('topicTitle').textContent = topics[topicIndex].name;
     
-    // Обновляем активную кнопку
     document.querySelectorAll('.topic-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === topicIndex);
     });
