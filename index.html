@@ -296,7 +296,7 @@ body {
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷</button>
     <button class="btn" onclick="shuffle()">🔀</button>
     <a href="oops.html" class="oops-link">Oops!</a>
     <div class="page-badge">
@@ -308,7 +308,7 @@ body {
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">️ Назад</button>
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
@@ -388,7 +388,47 @@ const wordsTopic2 = [
     { cn:'换衣服', py:'huàn yīfu', ru:'менять одежду', c:'c5', img:'IMG_7269.png' },
     { cn:'搬东西', py:'bān dōngxi', ru:'переносить вещи', c:'c6', img:'IMG_7270.png' },
     { cn:'修玩具', py:'xiū wánjù', ru:'чинить игрушки', c:'c7', img:'IMG_7271.png' },
-    { cn:'种花', py:'zhòng huā', ru:'высаживать цветы', c:'c8', img:'IMG_7272.png' }
+    { cn:'种花', py:'zhòng huā', ru:'высаживать цветы', c:'c8', img:'IMG_7272.png' },
+    { cn:'开门', py:'kāi mén', ru:'открывать дверь', c:'c9', img:'IMG_7273.png' },
+    { cn:'关窗', py:'guān chuāng', ru:'закрывать окно', c:'c10', img:'IMG_7274.png' },
+    { cn:'拿苹果', py:'ná píngguǒ', ru:'брать яблоко', c:'c11', img:'IMG_7275.png' },
+    { cn:'递票', py:'dì piào', ru:'передавать билет', c:'c12', img:'IMG_7276.png' },
+    { cn:'扔垃圾', py:'rēng lājī', ru:'выбрасывать мусор', c:'c13', img:'IMG_7277.png' },
+    { cn:'藏玩具', py:'cáng wánjù', ru:'прятать игрушку', c:'c14', img:'IMG_7278.png' },
+    { cn:'喜欢猫', py:'xǐhuan māo', ru:'любить кошек', c:'c15', img:'IMG_7279.png' },
+    { cn:'忘带伞', py:'wàng dài sǎn', ru:'забыть зонт', c:'c16', img:'IMG_7280.png' },
+    { cn:'上车', py:'shàng chē', ru:'садиться в машину', c:'c1', img:'IMG_7281.png' },
+    { cn:'下车', py:'xià chē', ru:'выходить из машины', c:'c2', img:'IMG_7282.png' },
+    { cn:'打电话', py:'dǎ diànhuà', ru:'звонить по телефону', c:'c3', img:'IMG_7283.png' },
+    { cn:'问问题', py:'wèn wèntí', ru:'задавать вопрос', c:'c4', img:'IMG_7284.png' },
+    { cn:'刷牙', py:'shuā yá', ru:'чистить зубы', c:'c5', img:'IMG_7285.png' },
+    { cn:'洗澡', py:'xǐ zǎo', ru:'принимать душ', c:'c6', img:'IMG_7286.png' },
+    { cn:'穿鞋', py:'chuān xié', ru:'надевать обувь', c:'c7', img:'IMG_7287.png' },
+    { cn:'害怕', py:'hàipà', ru:'бояться', c:'c8', img:'IMG_7288.png' },
+    { cn:'起床', py:'qǐ chuáng', ru:'вставать с кровати', c:'c9', img:'IMG_7289.png' },
+    { cn:'看手机', py:'kàn shǒujī', ru:'смотреть в телефон', c:'c10', img:'IMG_7290.png' },
+    { cn:'喝咖啡', py:'hē kāfēi', ru:'пить кофе', c:'c11', img:'IMG_7291.png' },
+    { cn:'吃冰淇淋', py:'chī bīngqílín', ru:'есть мороженое', c:'c12', img:'IMG_7292.png' },
+    { cn:'打篮球', py:'dǎ lánqiú', ru:'играть в баскетбол', c:'c13', img:'IMG_7293.png' },
+    { cn:'洗碗', py:'xǐ wǎn', ru:'мыть посуду', c:'c14', img:'IMG_7294.png' },
+    { cn:'梳头', py:'shū tóu', ru:'расчёсывать волосы', c:'c15', img:'IMG_7295.png' },
+    { cn:'排队', py:'pái duì', ru:'стоять в очереди', c:'c16', img:'IMG_7296.png' },
+    { cn:'下雨', py:'xià yǔ', ru:'идёт дождь', c:'c1', img:'IMG_7297.png' },
+    { cn:'下雪', py:'xià xuě', ru:'идёт снег', c:'c2', img:'IMG_7298.png' },
+    { cn:'写作业', py:'xiě zuòyè', ru:'делать уроки', c:'c3', img:'IMG_7299.png' },
+    { cn:'上课', py:'shàng kè', ru:'идти на урок', c:'c4', img:'IMG_7300.png' },
+    { cn:'吃药', py:'chī yào', ru:'принимать лекарство', c:'c5', img:'IMG_7301.png' },
+    { cn:'看医生', py:'kàn yīshēng', ru:'идти к врачу', c:'c6', img:'IMG_7302.png' },
+    { cn:'坐飞机', py:'zuò fēijī', ru:'лететь на самолёте', c:'c7', img:'IMG_7303.png' },
+    { cn:'坐火车', py:'zuò huǒchē', ru:'ехать на поезде', c:'c8', img:'IMG_7304.png' },
+    { cn:'去餐厅', py:'qù cāntīng', ru:'идти в ресторан', c:'c9', img:'IMG_7305.png' },
+    { cn:'看菜单', py:'kàn càidān', ru:'смотреть меню', c:'c10', img:'IMG_7306.png' },
+    { cn:'点菜', py:'diǎn cài', ru:'делать заказ', c:'c11', img:'IMG_7307.png' },
+    { cn:'叫服务员', py:'jiào fúwùyuán', ru:'звать официанта', c:'c12', img:'IMG_7308.png' },
+    { cn:'有薯条吗', py:'yǒu shǔtiáo ma', ru:'есть картошка фри?', c:'c13', img:'IMG_7309.png' },
+    { cn:'选甜点', py:'xuǎn tiándiǎn', ru:'выбирать десерт', c:'c14', img:'IMG_7310.png' },
+    { cn:'买单', py:'mǎidān', ru:'просить счёт', c:'c15', img:'IMG_7311.png' },
+    { cn:'打包', py:'dǎbāo', ru:'брать с собой', c:'c16', img:'IMG_7312.png' }
 ];
 
 const topics = [
