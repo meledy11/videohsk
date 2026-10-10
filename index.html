@@ -17,7 +17,6 @@ body {
     display: flex;
     flex-direction: column;
     padding: 8px;
-    padding-bottom: 8mm;
     position: relative;
 }
 
@@ -36,114 +35,139 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-.top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+.header {
+    text-align: center;
+    padding: 4px 0 6px;
     flex-shrink: 0;
-    padding: 4px 0;
-    flex-wrap: wrap;
     position: relative;
+}
+
+.header-top {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 0.72em;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.3em;
+    color: #ff6b6b;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: -10px;
+    right: -10px;
+    height: 6px;
+    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
+    border-radius: 4px;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.heart {
+    color: #ff6b6b;
+    font-size: 0.6em;
+    vertical-align: middle;
+    margin-left: 10px;
 }
 
 .page-badge {
     position: absolute;
-    top: 2px;
+    top: 4px;
     right: 8px;
     background: #FFFEF5;
     border: 2px dashed #ffb6c1;
     border-radius: 12px;
-    padding: 3px 8px;
+    padding: 4px 10px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .page-badge .current {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 900;
-    color: #6b4c8a;
+    color: #ff6b6b;
 }
 
 .page-badge .total {
-    font-size: 0.65em;
+    font-size: 0.7em;
     color: #999;
     position: absolute;
-    top: -5px;
+    top: -6px;
     right: -3px;
     background: #e0e0e0;
     padding: 1px 6px;
     border-radius: 8px;
 }
 
-.topic-btn {
-    padding: 3px 10px;
-    border: 2px solid #EDE8DD;
-    border-radius: 18px;
-    background: #FFFEF5;
-    color: #6b4c8a;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 0.65em;
-    transition: all 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.topic-btn.active {
-    background: linear-gradient(135deg, #a8edea, #fed6e3);
-    border-color: #ffb6c1;
-    color: #5a3e2b;
-    box-shadow: 0 3px 8px rgba(255,182,193,0.4);
+.controls {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 .btn {
-    padding: 3px 9px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.65em;
+    font-size: 0.7em;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
 
 .btn:hover { transform: translateY(-2px); }
 
-.oops-link {
-    padding: 3px 10px;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    color: white;
-    text-decoration: none;
+.topic-btn {
+    padding: 5px 10px;
+    border: 2px solid #EDE8DD;
     border-radius: 18px;
+    background: #FFFEF5;
+    color: #6b4c8a;
     font-weight: 700;
-    font-size: 0.65em;
-    box-shadow: 0 3px 8px rgba(238, 156, 167, 0.4);
-    transition: all 0.2s;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    display: inline-block;
+    cursor: pointer;
+    font-size: 0.7em;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.oops-link:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 5px 12px rgba(238, 156, 167, 0.6);
+.topic-btn.active {
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    border-color: #ffb6c1;
+    color: #5a3e2b;
+    box-shadow: 0 3px 8px rgba(255,182,193,0.4);
 }
 
 .grid {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 5px;
+    gap: 7px;
     min-height: 0;
     overflow: hidden;
-    padding: 4px 0;
 }
 
 .card {
     border-radius: 14px;
-    padding: 4px;
+    padding: 6px;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -153,7 +177,7 @@ body {
     background: #FFFEF5;
     border: 1px solid #EDE8DD;
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .card:hover {
@@ -162,8 +186,8 @@ body {
 }
 
 .card.playing {
-    border: 2.5px solid #ff69b4;
-    box-shadow: 0 0 0 3px rgba(255,105,180,0.2), 0 4px 12px rgba(0,0,0,0.1);
+    border: 2.5px solid #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(255,107,107,0.2), 0 4px 12px rgba(0,0,0,0.1);
     animation: pulse 0.5s ease;
 }
 
@@ -174,7 +198,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 55%;
+    height: 50%;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -192,7 +216,24 @@ body {
     padding: 2px 0 0 0;
     position: relative;
     flex: 1;
-    overflow: hidden;
+}
+
+.number {
+    position: absolute;
+    top: -14px;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 800;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 .chinese {
@@ -200,40 +241,40 @@ body {
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 2px;
+    margin-top: 10px;
 }
 
 .pinyin {
-    font-size: 0.65em;
+    font-size: 0.8em;
     color: #666;
     font-weight: 600;
-    line-height: 1;
-    margin-top: 1px;
+    line-height: 1.1;
+    margin-top: 2px;
 }
 
 .russian {
-    font-size: 0.78em;
+    font-size: 1em;
     font-weight: 800;
-    line-height: 1;
-    margin-top: 1px;
+    line-height: 1.1;
+    margin-top: 2px;
 }
 
-.c1 .chinese { color: #2e7d32; } .c1 .russian { color: #2e7d32; }
-.c2 .chinese { color: #c62828; } .c2 .russian { color: #c62828; }
-.c3 .chinese { color: #e65100; } .c3 .russian { color: #e65100; }
-.c4 .chinese { color: #6a1b9a; } .c4 .russian { color: #6a1b9a; }
-.c5 .chinese { color: #0277bd; } .c5 .russian { color: #0277bd; }
-.c6 .chinese { color: #f57f17; } .c6 .russian { color: #f57f17; }
-.c7 .chinese { color: #d84315; } .c7 .russian { color: #d84315; }
-.c8 .chinese { color: #283593; } .c8 .russian { color: #283593; }
-.c9 .chinese { color: #ad1457; } .c9 .russian { color: #ad1457; }
-.c10 .chinese { color: #e65100; } .c10 .russian { color: #e65100; }
-.c11 .chinese { color: #1b5e20; } .c11 .russian { color: #1b5e20; }
-.c12 .chinese { color: #0d47a1; } .c12 .russian { color: #0d47a1; }
-.c13 .chinese { color: #bf360c; } .c13 .russian { color: #bf360c; }
-.c14 .chinese { color: #4527a0; } .c14 .russian { color: #4527a0; }
-.c15 .chinese { color: #006064; } .c15 .russian { color: #006064; }
-.c16 .chinese { color: #e65100; } .c16 .russian { color: #e65100; }
+.c1 .number { background: #ff6b6b; } .c1 .russian { color: #ff6b6b; }
+.c2 .number { background: #4ecdc4; } .c2 .russian { color: #4ecdc4; }
+.c3 .number { background: #f4b942; } .c3 .russian { color: #f4b942; }
+.c4 .number { background: #3d9970; } .c4 .russian { color: #3d9970; }
+.c5 .number { background: #fd79a8; } .c5 .russian { color: #fd79a8; }
+.c6 .number { background: #e17055; } .c6 .russian { color: #e17055; }
+.c7 .number { background: #6c5ce7; } .c7 .russian { color: #6c5ce7; }
+.c8 .number { background: #00b894; } .c8 .russian { color: #00b894; }
+.c9 .number { background: #e17055; } .c9 .russian { color: #e17055; }
+.c10 .number { background: #0984e3; } .c10 .russian { color: #0984e3; }
+.c11 .number { background: #d63031; } .c11 .russian { color: #d63031; }
+.c12 .number { background: #e84393; } .c12 .russian { color: #e84393; }
+.c13 .number { background: #2d3436; } .c13 .russian { color: #2d3436; }
+.c14 .number { background: #fdcb6e; } .c14 .russian { color: #fdcb6e; }
+.c15 .number { background: #00cec9; } .c15 .russian { color: #00cec9; }
+.c16 .number { background: #a29bfe; } .c16 .russian { color: #a29bfe; }
 
 .pagination {
     display: flex;
@@ -241,7 +282,7 @@ body {
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
-    padding: 6px 0 4px;
+    padding: 5px 0 2px;
 }
 
 .page-btn {
@@ -259,7 +300,7 @@ body {
 }
 
 .page-btn:hover:not(:disabled) {
-    background: #fed6e3;
+    background: #ffdde1;
     transform: translateY(-2px);
 }
 
@@ -269,22 +310,20 @@ body {
 }
 
 @media (max-width: 600px) {
-    .grid { gap: 4px; }
-    .card { padding: 3px; }
-    .card-img { height: 53%; }
+    .grid { gap: 5px; }
+    .card { padding: 5px; }
+    .card-img { height: 48%; }
     .chinese { font-size: 1.6em; }
-    .pinyin { font-size: 0.6em; }
-    .russian { font-size: 0.72em; }
-    .topic-btn { font-size: 0.6em; padding: 3px 8px; }
-    .btn { font-size: 0.6em; padding: 3px 8px; }
-    .oops-link { font-size: 0.6em; padding: 3px 8px; }
+    .pinyin { font-size: 0.75em; }
+    .russian { font-size: 0.9em; }
+    .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
+    .header h1 { font-size: 2em; }
 }
 
 @media (max-width: 400px) {
     .chinese { font-size: 1.4em; }
-    .russian { font-size: 0.68em; }
-    .card-img { height: 52%; }
-    .top-bar { gap: 4px; }
+    .russian { font-size: 0.85em; }
+    .card-img { height: 45%; }
 }
 </style>
 </head>
@@ -292,17 +331,23 @@ body {
 
 <div class="cloud">☁️</div>
 
-<div class="top-bar">
-    <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
-    <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
-    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
-    <button class="btn" onclick="speakCurrentPage('ru')">🇷</button>
-    <button class="btn" onclick="shuffle()">🔀</button>
-    <a href="oops.html" class="oops-link">Oops!</a>
+<div class="header">
+    <div class="header-top">🌙 Mia's Mandarin - Словарь</div>
+    <h1>Словарь 📚 <span class="heart">💫</span></h1>
     <div class="page-badge">
         <span class="total" id="pageTotal">1/2</span>
         <div class="current" id="pageCurrent">01</div>
     </div>
+</div>
+
+<div class="controls">
+    <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
+    <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
+    <button class="topic-btn" onclick="switchTopic(2)">Еда</button>
+    <button class="topic-btn" onclick="switchTopic(3)">Диалог</button>
+    <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
+    <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
+    <button class="btn" onclick="shuffle()">🔀</button>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -313,6 +358,7 @@ body {
 </div>
 
 <script>
+/* ===== ТЕМА 1: ХАРАКТЕР ===== */
 const wordsTopic1 = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
@@ -332,6 +378,7 @@ const wordsTopic1 = [
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
+/* ===== ТЕМА 2: ГЛАГОЛЫ ===== */
 const wordsTopic2 = [
     { cn:'走路', py:'zǒulù', ru:'ходить пешком', c:'c1', img:'IMG_7216.png' },
     { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
@@ -431,9 +478,51 @@ const wordsTopic2 = [
     { cn:'打包', py:'dǎbāo', ru:'брать с собой', c:'c16', img:'IMG_7312.png' }
 ];
 
+/* ===== ТЕМА 3: ЕДА ===== */
+const wordsFood = [
+    { cn:'吃早饭', py:'chī zǎofàn', ru:'завтракать', c:'c1', img:'IMG_7313.png' },
+    { cn:'吃午饭', py:'chī wǔfàn', ru:'обедать', c:'c2', img:'IMG_7314.png' },
+    { cn:'吃晚饭', py:'chī wǎnfàn', ru:'ужинать', c:'c3', img:'IMG_7315.png' },
+    { cn:'摆桌子', py:'bǎi zhuōzi', ru:'накрывать на стол', c:'c4', img:'IMG_7316.png' },
+    { cn:'煮面条', py:'zhǔ miàntiáo', ru:'варить лапшу', c:'c5', img:'IMG_7317.png' },
+    { cn:'剥皮', py:'bāo pí', ru:'чистить кожуру', c:'c6', img:'IMG_7318.png' },
+    { cn:'尝味道', py:'cháng wèidào', ru:'пробовать на вкус', c:'c7', img:'IMG_7319.png' },
+    { cn:'端盘子', py:'duān pánzi', ru:'нести тарелку', c:'c8', img:'IMG_7320.png' },
+    { cn:'倒水', py:'dào shuǐ', ru:'наливать воду', c:'c9', img:'IMG_7321.png' },
+    { cn:'切菜', py:'qiē cài', ru:'резать овощи', c:'c10', img:'IMG_7322.png' },
+    { cn:'煮饭', py:'zhǔ fàn', ru:'варить рис', c:'c11', img:'IMG_7323.png' },
+    { cn:'炒菜', py:'chǎo cài', ru:'жарить блюдо', c:'c12', img:'IMG_7324.png' },
+    { cn:'尝一口', py:'cháng yī kǒu', ru:'попробовать кусочек', c:'c13', img:'IMG_7325.png' },
+    { cn:'喝汤', py:'hē tāng', ru:'есть суп', c:'c14', img:'IMG_7326.png' },
+    { cn:'吃水果', py:'chī shuǐguǒ', ru:'есть фрукты', c:'c15', img:'IMG_7327.png' },
+    { cn:'撒盐', py:'sǎ yán', ru:'солить', c:'c16', img:'IMG_7328.png' }
+];
+
+/* ===== ТЕМА 4: ДИАЛОГ ===== */
+const wordsDialog = [
+    { cn:'你好', py:'nǐ hǎo', ru:'привет', c:'c1', img:'IMG_8591.png' },
+    { cn:'你好吗', py:'nǐ hǎo ma', ru:'как дела?', c:'c2', img:'IMG_8592.png' },
+    { cn:'我很好', py:'wǒ hěn hǎo', ru:'у меня всё хорошо', c:'c3', img:'IMG_8593.png' },
+    { cn:'谢谢', py:'xiè xie', ru:'спасибо', c:'c4', img:'IMG_8594.png' },
+    { cn:'不客气', py:'bú kèqi', ru:'не за что', c:'c5', img:'IMG_8595.png' },
+    { cn:'对不起', py:'duì bu qǐ', ru:'извини', c:'c6', img:'IMG_8596.png' },
+    { cn:'没关系', py:'méi guānxi', ru:'ничего страшного', c:'c7', img:'IMG_8597.png' },
+    { cn:'请问', py:'qǐng wèn', ru:'позвольте спросить', c:'c8', img:'IMG_8598.png' },
+    { cn:'你叫什么名字', py:'nǐ jiào shénme míngzi', ru:'как тебя зовут?', c:'c9', img:'IMG_8599.png' },
+    { cn:'我叫...', py:'wǒ jiào...', ru:'меня зовут...', c:'c10', img:'IMG_8600.png' },
+    { cn:'很高兴认识你', py:'hěn gāoxìng rènshi nǐ', ru:'рад познакомиться', c:'c11', img:'IMG_8601.png' },
+    { cn:'你多大', py:'nǐ duō dà', ru:'сколько тебе лет?', c:'c12', img:'IMG_8602.png' },
+    { cn:'我七岁', py:'wǒ qī suì', ru:'мне семь лет', c:'c13', img:'IMG_8603.png' },
+    { cn:'再见', py:'zài jiàn', ru:'до свидания', c:'c14', img:'IMG_8604.png' },
+    { cn:'明天见', py:'míngtiān jiàn', ru:'до завтра', c:'c15', img:'IMG_8605.png' },
+    { cn:'晚安', py:'wǎn ān', ru:'спокойной ночи', c:'c16', img:'IMG_8606.png' }
+];
+
 const topics = [
     { words: wordsTopic1 },
-    { words: wordsTopic2 }
+    { words: wordsTopic2 },
+    { words: wordsFood },
+    { words: wordsDialog }
 ];
 
 const imgPath = './img/';
@@ -468,12 +557,13 @@ function render() {
         const globalIndex = start + index;
         const card = document.createElement('div');
         card.className = `card ${word.c}`;
-        card.id = `card-${globalIndex}`;
+        card.id = `card-${index}`;
         card.onclick = () => speakCard(globalIndex);
         
         card.innerHTML = `
             <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
             <div class="text-block">
+                <div class="number">${globalIndex + 1}</div>
                 <div class="chinese">${word.cn}</div>
                 <div class="pinyin">${word.py}</div>
                 <div class="russian">${word.ru}</div>
@@ -506,7 +596,7 @@ function speak(text, lang) {
         speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
-        utterance.rate = 0.7;
+        utterance.rate = 0.85;
         utterance.pitch = 1.05;
         speechSynthesis.speak(utterance);
     }
@@ -514,24 +604,29 @@ function speak(text, lang) {
 
 function speakCard(index) {
     const word = currentWords[index];
-    const card = document.getElementById(`card-${index}`);
+    const cardIndex = index - currentPage * cardsPerPage;
+    const card = document.getElementById(`card-${cardIndex}`);
     
     document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
-    card.classList.add('playing');
-    setTimeout(() => card.classList.remove('playing'), 1500);
+    if (card) {
+        card.classList.add('playing');
+        setTimeout(() => card.classList.remove('playing'), 1500);
+    }
     
     speak(word.cn, 'zh-CN');
-    setTimeout(() => speak(word.ru, 'ru-RU'), 1500);
+    setTimeout(() => speak(word.ru, 'ru-RU'), 1100);
 }
 
 function speakCurrentPage(lang) {
+    speechSynthesis.cancel();
     const start = currentPage * cardsPerPage;
     const end = Math.min(start + cardsPerPage, currentWords.length);
     let delay = 0;
     
     for (let i = start; i < end; i++) {
+        const cardIndex = i - start;
         setTimeout(() => {
-            const card = document.getElementById(`card-${i}`);
+            const card = document.getElementById(`card-${cardIndex}`);
             if (card) {
                 document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
                 card.classList.add('playing');
@@ -540,7 +635,7 @@ function speakCurrentPage(lang) {
             const word = currentWords[i];
             speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
         }, delay);
-        delay += 2200;
+        delay += 1800;
     }
 }
 
@@ -554,4 +649,3 @@ render();
 </script>
 </body>
 </html>
-
