@@ -344,7 +344,6 @@ body {
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
     <button class="topic-btn" onclick="switchTopic(2)">Еда</button>
-    <button class="topic-btn" onclick="switchTopic(3)">Диалог</button>
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
@@ -358,7 +357,6 @@ body {
 </div>
 
 <script>
-/* ===== ТЕМА 1: ХАРАКТЕР ===== */
 const wordsTopic1 = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
@@ -378,7 +376,6 @@ const wordsTopic1 = [
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
-/* ===== ТЕМА 2: ГЛАГОЛЫ ===== */
 const wordsTopic2 = [
     { cn:'走路', py:'zǒulù', ru:'ходить пешком', c:'c1', img:'IMG_7216.png' },
     { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
@@ -478,51 +475,29 @@ const wordsTopic2 = [
     { cn:'打包', py:'dǎbāo', ru:'брать с собой', c:'c16', img:'IMG_7312.png' }
 ];
 
-/* ===== ТЕМА 3: ЕДА ===== */
 const wordsFood = [
-    { cn:'吃早饭', py:'chī zǎofàn', ru:'завтракать', c:'c1', img:'IMG_7313.png' },
-    { cn:'吃午饭', py:'chī wǔfàn', ru:'обедать', c:'c2', img:'IMG_7314.png' },
-    { cn:'吃晚饭', py:'chī wǎnfàn', ru:'ужинать', c:'c3', img:'IMG_7315.png' },
-    { cn:'摆桌子', py:'bǎi zhuōzi', ru:'накрывать на стол', c:'c4', img:'IMG_7316.png' },
-    { cn:'煮面条', py:'zhǔ miàntiáo', ru:'варить лапшу', c:'c5', img:'IMG_7317.png' },
-    { cn:'剥皮', py:'bāo pí', ru:'чистить кожуру', c:'c6', img:'IMG_7318.png' },
-    { cn:'尝味道', py:'cháng wèidào', ru:'пробовать на вкус', c:'c7', img:'IMG_7319.png' },
-    { cn:'端盘子', py:'duān pánzi', ru:'нести тарелку', c:'c8', img:'IMG_7320.png' },
-    { cn:'倒水', py:'dào shuǐ', ru:'наливать воду', c:'c9', img:'IMG_7321.png' },
-    { cn:'切菜', py:'qiē cài', ru:'резать овощи', c:'c10', img:'IMG_7322.png' },
-    { cn:'煮饭', py:'zhǔ fàn', ru:'варить рис', c:'c11', img:'IMG_7323.png' },
-    { cn:'炒菜', py:'chǎo cài', ru:'жарить блюдо', c:'c12', img:'IMG_7324.png' },
-    { cn:'尝一口', py:'cháng yī kǒu', ru:'попробовать кусочек', c:'c13', img:'IMG_7325.png' },
-    { cn:'喝汤', py:'hē tāng', ru:'есть суп', c:'c14', img:'IMG_7326.png' },
-    { cn:'吃水果', py:'chī shuǐguǒ', ru:'есть фрукты', c:'c15', img:'IMG_7327.png' },
-    { cn:'撒盐', py:'sǎ yán', ru:'солить', c:'c16', img:'IMG_7328.png' }
-];
-
-/* ===== ТЕМА 4: ДИАЛОГ ===== */
-const wordsDialog = [
-    { cn:'你好', py:'nǐ hǎo', ru:'привет', c:'c1', img:'IMG_8591.png' },
-    { cn:'你好吗', py:'nǐ hǎo ma', ru:'как дела?', c:'c2', img:'IMG_8592.png' },
-    { cn:'我很好', py:'wǒ hěn hǎo', ru:'у меня всё хорошо', c:'c3', img:'IMG_8593.png' },
-    { cn:'谢谢', py:'xiè xie', ru:'спасибо', c:'c4', img:'IMG_8594.png' },
-    { cn:'不客气', py:'bú kèqi', ru:'не за что', c:'c5', img:'IMG_8595.png' },
-    { cn:'对不起', py:'duì bu qǐ', ru:'извини', c:'c6', img:'IMG_8596.png' },
-    { cn:'没关系', py:'méi guānxi', ru:'ничего страшного', c:'c7', img:'IMG_8597.png' },
-    { cn:'请问', py:'qǐng wèn', ru:'позвольте спросить', c:'c8', img:'IMG_8598.png' },
-    { cn:'你叫什么名字', py:'nǐ jiào shénme míngzi', ru:'как тебя зовут?', c:'c9', img:'IMG_8599.png' },
-    { cn:'我叫...', py:'wǒ jiào...', ru:'меня зовут...', c:'c10', img:'IMG_8600.png' },
-    { cn:'很高兴认识你', py:'hěn gāoxìng rènshi nǐ', ru:'рад познакомиться', c:'c11', img:'IMG_8601.png' },
-    { cn:'你多大', py:'nǐ duō dà', ru:'сколько тебе лет?', c:'c12', img:'IMG_8602.png' },
-    { cn:'我七岁', py:'wǒ qī suì', ru:'мне семь лет', c:'c13', img:'IMG_8603.png' },
-    { cn:'再见', py:'zài jiàn', ru:'до свидания', c:'c14', img:'IMG_8604.png' },
-    { cn:'明天见', py:'míngtiān jiàn', ru:'до завтра', c:'c15', img:'IMG_8605.png' },
-    { cn:'晚安', py:'wǎn ān', ru:'спокойной ночи', c:'c16', img:'IMG_8606.png' }
+    { cn:'吃早饭', py:'chī zǎofàn', ru:'завтракать', c:'c1', img:'IMG_8591.png' },
+    { cn:'吃午饭', py:'chī wǔfàn', ru:'обедать', c:'c2', img:'IMG_8592.png' },
+    { cn:'吃晚饭', py:'chī wǎnfàn', ru:'ужинать', c:'c3', img:'IMG_8593.png' },
+    { cn:'摆桌子', py:'bǎi zhuōzi', ru:'накрывать на стол', c:'c4', img:'IMG_8594.png' },
+    { cn:'煮面条', py:'zhǔ miàntiáo', ru:'варить лапшу', c:'c5', img:'IMG_8595.png' },
+    { cn:'剥皮', py:'bāo pí', ru:'чистить кожуру', c:'c6', img:'IMG_8596.png' },
+    { cn:'尝味道', py:'cháng wèidào', ru:'пробовать на вкус', c:'c7', img:'IMG_8597.png' },
+    { cn:'端盘子', py:'duān pánzi', ru:'нести тарелку', c:'c8', img:'IMG_8598.png' },
+    { cn:'倒水', py:'dào shuǐ', ru:'наливать воду', c:'c9', img:'IMG_8599.png' },
+    { cn:'切菜', py:'qiē cài', ru:'резать овощи', c:'c10', img:'IMG_8600.png' },
+    { cn:'煮饭', py:'zhǔ fàn', ru:'варить рис', c:'c11', img:'IMG_8601.png' },
+    { cn:'炒菜', py:'chǎo cài', ru:'жарить блюдо', c:'c12', img:'IMG_8602.png' },
+    { cn:'尝一口', py:'cháng yī kǒu', ru:'попробовать кусочек', c:'c13', img:'IMG_8603.png' },
+    { cn:'喝汤', py:'hē tāng', ru:'есть суп', c:'c14', img:'IMG_8604.png' },
+    { cn:'吃水果', py:'chī shuǐguǒ', ru:'есть фрукты', c:'c15', img:'IMG_8605.png' },
+    { cn:'撒盐', py:'sǎ yán', ru:'солить', c:'c16', img:'IMG_8606.png' }
 ];
 
 const topics = [
     { words: wordsTopic1 },
     { words: wordsTopic2 },
-    { words: wordsFood },
-    { words: wordsDialog }
+    { words: wordsFood }
 ];
 
 const imgPath = './img/';
