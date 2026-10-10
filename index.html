@@ -156,6 +156,25 @@ body {
     box-shadow: 0 3px 8px rgba(255,182,193,0.4);
 }
 
+.oops-link {
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: white;
+    text-decoration: none;
+    border-radius: 18px;
+    font-weight: 700;
+    font-size: 0.7em;
+    box-shadow: 0 3px 8px rgba(238, 156, 167, 0.4);
+    transition: all 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+
+.oops-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 12px rgba(238, 156, 167, 0.6);
+}
+
 .grid {
     flex: 1;
     display: grid;
@@ -347,6 +366,7 @@ body {
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
+    <a href="oops.html" class="oops-link">Oops! 😅</a>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -357,6 +377,7 @@ body {
 </div>
 
 <script>
+/* ===== ТЕМА 1: ХАРАКТЕР ===== */
 const wordsTopic1 = [
     { cn:'安全', py:'ān quán', ru:'безопасный', c:'c1', img:'IMG_7195.png' },
     { cn:'危险', py:'wēi xiǎn', ru:'опасный', c:'c2', img:'IMG_7180.png' },
@@ -376,6 +397,7 @@ const wordsTopic1 = [
     { cn:'结束', py:'jié shù', ru:'закончить', c:'c16', img:'IMG_7194.png' }
 ];
 
+/* ===== ТЕМА 2: ГЛАГОЛЫ ===== */
 const wordsTopic2 = [
     { cn:'走路', py:'zǒulù', ru:'ходить пешком', c:'c1', img:'IMG_7216.png' },
     { cn:'跑步', py:'pǎobù', ru:'бегать', c:'c2', img:'IMG_7217.png' },
@@ -475,6 +497,7 @@ const wordsTopic2 = [
     { cn:'打包', py:'dǎbāo', ru:'брать с собой', c:'c16', img:'IMG_7312.png' }
 ];
 
+/* ===== ТЕМА 3: ЕДА ===== */
 const wordsFood = [
     { cn:'吃早饭', py:'chī zǎofàn', ru:'завтракать', c:'c1', img:'IMG_8591.png' },
     { cn:'吃午饭', py:'chī wǔfàn', ru:'обедать', c:'c2', img:'IMG_8592.png' },
