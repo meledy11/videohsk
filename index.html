@@ -256,7 +256,7 @@ body {
 }
 
 .chinese {
-    font-size: 1.8em;
+    font-size: 1.5em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
@@ -264,7 +264,7 @@ body {
 }
 
 .pinyin {
-    font-size: 0.8em;
+    font-size: 0.72em;
     color: #666;
     font-weight: 600;
     line-height: 1.1;
@@ -272,7 +272,7 @@ body {
 }
 
 .russian {
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 800;
     line-height: 1.1;
     margin-top: 2px;
@@ -332,16 +332,16 @@ body {
     .grid { gap: 5px; }
     .card { padding: 5px; }
     .card-img { height: 48%; }
-    .chinese { font-size: 1.6em; }
-    .pinyin { font-size: 0.75em; }
-    .russian { font-size: 0.9em; }
+    .chinese { font-size: 1.35em; }
+    .pinyin { font-size: 0.68em; }
+    .russian { font-size: 0.85em; }
     .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
     .header h1 { font-size: 2em; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.4em; }
-    .russian { font-size: 0.85em; }
+    .chinese { font-size: 1.2em; }
+    .russian { font-size: 0.8em; }
     .card-img { height: 45%; }
 }
 </style>
@@ -362,7 +362,7 @@ body {
 <div class="controls">
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
-    <button class="topic-btn" onclick="switchTopic(2)">Еда</button>
+    <button class="topic-btn" onclick="switchTopic(2)">Готовка</button>
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
@@ -497,30 +497,30 @@ const wordsTopic2 = [
     { cn:'打包', py:'dǎbāo', ru:'брать с собой', c:'c16', img:'IMG_7312.png' }
 ];
 
-/* ===== ТЕМА 3: ЕДА ===== */
-const wordsFood = [
-    { cn:'吃早饭', py:'chī zǎofàn', ru:'завтракать', c:'c1', img:'IMG_8591.png' },
-    { cn:'吃午饭', py:'chī wǔfàn', ru:'обедать', c:'c2', img:'IMG_8592.png' },
-    { cn:'吃晚饭', py:'chī wǎnfàn', ru:'ужинать', c:'c3', img:'IMG_8593.png' },
-    { cn:'摆桌子', py:'bǎi zhuōzi', ru:'накрывать на стол', c:'c4', img:'IMG_8594.png' },
-    { cn:'煮面条', py:'zhǔ miàntiáo', ru:'варить лапшу', c:'c5', img:'IMG_8595.png' },
-    { cn:'剥皮', py:'bāo pí', ru:'чистить кожуру', c:'c6', img:'IMG_8596.png' },
-    { cn:'尝味道', py:'cháng wèidào', ru:'пробовать на вкус', c:'c7', img:'IMG_8597.png' },
-    { cn:'端盘子', py:'duān pánzi', ru:'нести тарелку', c:'c8', img:'IMG_8598.png' },
-    { cn:'倒水', py:'dào shuǐ', ru:'наливать воду', c:'c9', img:'IMG_8599.png' },
-    { cn:'切菜', py:'qiē cài', ru:'резать овощи', c:'c10', img:'IMG_8600.png' },
-    { cn:'煮饭', py:'zhǔ fàn', ru:'варить рис', c:'c11', img:'IMG_8601.png' },
-    { cn:'炒菜', py:'chǎo cài', ru:'жарить блюдо', c:'c12', img:'IMG_8602.png' },
-    { cn:'尝一口', py:'cháng yī kǒu', ru:'попробовать кусочек', c:'c13', img:'IMG_8603.png' },
-    { cn:'喝汤', py:'hē tāng', ru:'есть суп', c:'c14', img:'IMG_8604.png' },
-    { cn:'吃水果', py:'chī shuǐguǒ', ru:'есть фрукты', c:'c15', img:'IMG_8606.png' },
-    { cn:'撒盐', py:'sǎ yán', ru:'солить', c:'c16', img:'IMG_8607.png' }
+/* ===== ТЕМА 3: ГОТОВКА (IMG_8592 → IMG_8607) ===== */
+const wordsCooking = [
+    { cn:'做早饭', py:'zuò zǎofàn', ru:'готовить завтрак', c:'c1', img:'IMG_8592.png' },
+    { cn:'摆桌子', py:'bǎi zhuōzi', ru:'накрывать на стол', c:'c2', img:'IMG_8593.png' },
+    { cn:'煮面条', py:'zhǔ miàntiáo', ru:'варить лапшу', c:'c3', img:'IMG_8594.png' },
+    { cn:'剥水果皮', py:'bāo shuǐguǒ pí', ru:'чистить кожуру', c:'c4', img:'IMG_8595.png' },
+    { cn:'尝味道', py:'cháng wèidào', ru:'пробовать на вкус', c:'c5', img:'IMG_8596.png' },
+    { cn:'端盘子', py:'duān pánzi', ru:'нести тарелку', c:'c6', img:'IMG_8597.png' },
+    { cn:'倒水', py:'dào shuǐ', ru:'наливать воду', c:'c7', img:'IMG_8598.png' },
+    { cn:'切菜', py:'qiē cài', ru:'резать овощи', c:'c8', img:'IMG_8599.png' },
+    { cn:'煮饭', py:'zhǔ fàn', ru:'варить рис', c:'c9', img:'IMG_8600.png' },
+    { cn:'炒菜', py:'chǎo cài', ru:'жарить блюдо', c:'c10', img:'IMG_8601.png' },
+    { cn:'尝一口', py:'cháng yī kǒu', ru:'попробовать кусочек', c:'c11', img:'IMG_8602.png' },
+    { cn:'喝汤', py:'hē tāng', ru:'есть суп', c:'c12', img:'IMG_8603.png' },
+    { cn:'吃水果', py:'chī shuǐguǒ', ru:'есть фрукты', c:'c13', img:'IMG_8604.png' },
+    { cn:'撒盐', py:'sǎ yán', ru:'солить', c:'c14', img:'IMG_8605.png' },
+    { cn:'做好饭', py:'zuò hǎo fàn', ru:'обед готов', c:'c15', img:'IMG_8607.png' },
+    { cn:'洗碗', py:'xǐ wǎn', ru:'мыть посуду', c:'c16', img:'IMG_8608.png' }
 ];
 
 const topics = [
     { words: wordsTopic1 },
     { words: wordsTopic2 },
-    { words: wordsFood }
+    { words: wordsCooking }
 ];
 
 const imgPath = './img/';
