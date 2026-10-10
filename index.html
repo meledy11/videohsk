@@ -16,177 +16,100 @@ body {
     background: #F0EBE0;
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 4px;
     position: relative;
 }
 
-.cloud {
-    position: absolute;
-    top: 12px;
-    left: 15px;
-    font-size: 1.8em;
-    opacity: 0.7;
-    animation: float 4s ease-in-out infinite;
-    z-index: 100;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-.header {
-    text-align: center;
-    padding: 4px 0 6px;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.header-top {
-    display: inline-block;
-    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
-    padding: 3px 14px;
-    border-radius: 20px;
-    font-size: 0.72em;
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 2px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.header h1 {
-    font-family: 'Caveat', cursive;
-    font-size: 2.3em;
-    color: #ff6b6b;
-    font-weight: 700;
-    position: relative;
-    display: inline-block;
-}
-
-.header h1::after {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: -10px;
-    right: -10px;
-    height: 6px;
-    background: linear-gradient(90deg, #ffdde1, #ee9ca7);
-    border-radius: 4px;
-    opacity: 0.6;
-    z-index: -1;
-}
-
-.heart {
-    color: #ff6b6b;
-    font-size: 0.6em;
-    vertical-align: middle;
-    margin-left: 10px;
-}
-
-.page-badge {
-    position: absolute;
-    top: 4px;
-    right: 8px;
-    background: #FFFEF5;
-    border: 2px dashed #ffb6c1;
-    border-radius: 12px;
-    padding: 4px 10px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.page-badge .current {
-    font-size: 1.2em;
-    font-weight: 900;
-    color: #ff6b6b;
-}
-
-.page-badge .total {
-    font-size: 0.7em;
-    color: #999;
-    position: absolute;
-    top: -6px;
-    right: -3px;
-    background: #e0e0e0;
-    padding: 1px 6px;
-    border-radius: 8px;
-}
-
-.controls {
+/* Верхняя строка — ОДНА компактная */
+.top-bar {
     display: flex;
-    gap: 6px;
-    justify-content: center;
-    margin-bottom: 6px;
+    align-items: center;
+    gap: 4px;
     flex-shrink: 0;
-    flex-wrap: wrap;
+    padding: 2px 0 4px;
+    position: relative;
 }
-
-.btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    color: #5a3e2b;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 0.7em;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-}
-
-.btn:hover { transform: translateY(-2px); }
 
 .topic-btn {
-    padding: 5px 10px;
+    padding: 4px 9px;
     border: 2px solid #EDE8DD;
-    border-radius: 18px;
+    border-radius: 14px;
     background: #FFFEF5;
     color: #6b4c8a;
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.7em;
-    transition: all 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-size: 0.62em;
+    transition: all 0.25s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    white-space: nowrap;
 }
 
 .topic-btn.active {
     background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     border-color: #ffb6c1;
     color: #5a3e2b;
-    box-shadow: 0 3px 8px rgba(255,182,193,0.4);
+    box-shadow: 0 2px 6px rgba(255,182,193,0.4);
 }
 
-.oops-link {
-    padding: 5px 10px;
+.btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 14px;
     background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    color: white;
-    text-decoration: none;
-    border-radius: 18px;
+    color: #5a3e2b;
     font-weight: 700;
-    font-size: 0.7em;
-    box-shadow: 0 3px 8px rgba(238, 156, 167, 0.4);
-    transition: all 0.2s;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    display: inline-block;
+    cursor: pointer;
+    font-size: 0.62em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+    white-space: nowrap;
 }
 
-.oops-link:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 5px 12px rgba(238, 156, 167, 0.6);
+.btn:hover { transform: translateY(-1px); }
+
+/* Счётчик страниц — прижат вправо */
+.page-badge {
+    margin-left: auto;
+    background: #FFFEF5;
+    border: 2px dashed #ffb6c1;
+    border-radius: 10px;
+    padding: 2px 8px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.page-badge .current {
+    font-size: 0.95em;
+    font-weight: 900;
+    color: #ff6b6b;
+    line-height: 1;
+}
+
+.page-badge .total {
+    font-size: 0.55em;
+    color: #999;
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    background: #e0e0e0;
+    padding: 1px 4px;
+    border-radius: 5px;
 }
 
 .grid {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 7px;
+    gap: 5px;
     min-height: 0;
     overflow: hidden;
 }
 
 .card {
-    border-radius: 14px;
-    padding: 6px;
+    border-radius: 12px;
+    padding: 4px;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -195,13 +118,13 @@ body {
     transition: all 0.3s ease;
     background: #FFFEF5;
     border: 1px solid #EDE8DD;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     overflow: visible;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .card.playing {
@@ -217,7 +140,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 50%;
+    height: 58%;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -239,32 +162,32 @@ body {
 
 .number {
     position: absolute;
-    top: -14px;
+    top: -11px;
     left: 0;
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 0.95em;
+    font-size: 0.72em;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
     z-index: 2;
 }
 
 .chinese {
-    font-size: 1.5em;
+    font-size: 1.45em;
     font-weight: 900;
     color: #2d2d2d;
     line-height: 1;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .pinyin {
-    font-size: 0.72em;
+    font-size: 0.68em;
     color: #666;
     font-weight: 600;
     line-height: 1.1;
@@ -272,7 +195,7 @@ body {
 }
 
 .russian {
-    font-size: 0.9em;
+    font-size: 0.82em;
     font-weight: 800;
     line-height: 1.1;
     margin-top: 2px;
@@ -299,22 +222,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     flex-shrink: 0;
     padding: 5px 0 2px;
 }
 
 .page-btn {
-    padding: 6px 14px;
+    padding: 5px 12px;
     border: none;
-    border-radius: 18px;
+    border-radius: 14px;
     background: #FFFEF5;
     color: #5a3e2b;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     transition: all 0.2s;
-    font-size: 0.8em;
+    font-size: 0.7em;
     border: 1px solid #EDE8DD;
 }
 
@@ -328,51 +251,63 @@ body {
     cursor: not-allowed;
 }
 
+.oops-link {
+    padding: 5px 12px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: white;
+    text-decoration: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.7em;
+    box-shadow: 0 2px 6px rgba(238, 156, 167, 0.4);
+    transition: all 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+
+.oops-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(238, 156, 167, 0.6);
+}
+
 @media (max-width: 600px) {
-    .grid { gap: 5px; }
-    .card { padding: 5px; }
-    .card-img { height: 48%; }
-    .chinese { font-size: 1.35em; }
-    .pinyin { font-size: 0.68em; }
-    .russian { font-size: 0.85em; }
-    .number { width: 26px; height: 26px; min-width: 26px; font-size: 0.85em; top: -12px; }
-    .header h1 { font-size: 2em; }
+    .grid { gap: 4px; }
+    .card { padding: 3px; }
+    .card-img { height: 56%; }
+    .chinese { font-size: 1.3em; }
+    .pinyin { font-size: 0.62em; }
+    .russian { font-size: 0.78em; }
+    .number { width: 20px; height: 20px; min-width: 20px; font-size: 0.68em; top: -10px; }
+    .btn, .topic-btn { font-size: 0.58em; padding: 3px 7px; }
 }
 
 @media (max-width: 400px) {
-    .chinese { font-size: 1.2em; }
-    .russian { font-size: 0.8em; }
-    .card-img { height: 45%; }
+    .chinese { font-size: 1.15em; }
+    .russian { font-size: 0.72em; }
+    .card-img { height: 54%; }
 }
 </style>
 </head>
 <body>
 
-<div class="cloud">☁️</div>
-
-<div class="header">
-    <div class="header-top">🌙 Mia's Mandarin - Словарь</div>
-    <h1>Словарь 📚 <span class="heart">💫</span></h1>
-    <div class="page-badge">
-        <span class="total" id="pageTotal">1/2</span>
-        <div class="current" id="pageCurrent">01</div>
-    </div>
-</div>
-
-<div class="controls">
+<div class="top-bar">
     <button class="topic-btn active" onclick="switchTopic(0)">Характер</button>
     <button class="topic-btn" onclick="switchTopic(1)">Глаголы</button>
     <button class="topic-btn" onclick="switchTopic(2)">Готовка</button>
     <button class="btn" onclick="speakCurrentPage('cn')">🇨🇳</button>
     <button class="btn" onclick="speakCurrentPage('ru')">🇷🇺</button>
     <button class="btn" onclick="shuffle()">🔀</button>
-    <a href="oops.html" class="oops-link">Oops! 😅</a>
+    <div class="page-badge">
+        <span class="total" id="pageTotal">1/2</span>
+        <div class="current" id="pageCurrent">01</div>
+    </div>
 </div>
 
 <div class="grid" id="grid"></div>
 
 <div class="pagination">
     <button class="page-btn" id="prevBtn" onclick="changePage(-1)">⬅️ Назад</button>
+    <a href="oops.html" class="oops-link">Oops! 😅</a>
     <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперед ➡️</button>
 </div>
 
@@ -513,8 +448,8 @@ const wordsCooking = [
     { cn:'喝汤', py:'hē tāng', ru:'есть суп', c:'c12', img:'IMG_8603.png' },
     { cn:'吃水果', py:'chī shuǐguǒ', ru:'есть фрукты', c:'c13', img:'IMG_8604.png' },
     { cn:'撒盐', py:'sǎ yán', ru:'солить', c:'c14', img:'IMG_8605.png' },
-    { cn:'做好饭', py:'zuò hǎo fàn', ru:'обед готов', c:'c15', img:'IMG_8607.png' },
-    { cn:'洗碗', py:'xǐ wǎn', ru:'мыть посуду', c:'c16', img:'IMG_8608.png' }
+    { cn:'做好饭', py:'zuò hǎo fàn', ru:'обед готов', c:'c15', img:'IMG_8606.png' },
+    { cn:'洗碗', py:'xǐ wǎn', ru:'мыть посуду', c:'c16', img:'IMG_8607.png' }
 ];
 
 const topics = [
