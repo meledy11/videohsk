@@ -20,7 +20,6 @@ body {
     position: relative;
 }
 
-/* Верхняя строка — ОДНА компактная */
 .top-bar {
     display: flex;
     align-items: center;
@@ -67,7 +66,6 @@ body {
 
 .btn:hover { transform: translateY(-1px); }
 
-/* Счётчик страниц — прижат вправо */
 .page-badge {
     margin-left: auto;
     background: #FFFEF5;
@@ -430,9 +428,6 @@ const wordsTopic2 = [
     { cn:'选甜点', py:'xuǎn tiándiǎn', ru:'выбирать десерт', c:'c14', img:'IMG_7310.png' },
     { cn:'买单', py:'mǎidān', ru:'просить счёт', c:'c15', img:'IMG_7311.png' },
     { cn:'打包', py:'dǎbāo', ru:'брать с собой', c:'c16', img:'IMG_7312.png' },
-
- /* ===== ТЕМА 4: ЖИВОТНЫЕ (8629→8642, 8643 пропуск, 8644→8645) ===== */
-
     { cn:'喂猫', py:'wèi māo', ru:'кормить кошку', c:'c1', img:'IMG_8629.png' },
     { cn:'遛狗', py:'liù gǒu', ru:'выгуливать собаку', c:'c2', img:'IMG_8630.png' },
     { cn:'抱兔子', py:'bào tùzi', ru:'держать кролика', c:'c3', img:'IMG_8631.png' },
@@ -449,7 +444,6 @@ const wordsTopic2 = [
     { cn:'捡小狗', py:'jiǎn xiǎogǒu', ru:'подобрать щенка', c:'c14', img:'IMG_8642.png' },
     { cn:'拍动物', py:'pāi dòngwù', ru:'фотографировать зверей', c:'c15', img:'IMG_8644.png' },
     { cn:'喂兔子', py:'wèi tùzi', ru:'кормить кролика', c:'c16', img:'IMG_8645.png' },
-    /* ===== ТЕМА 5: 拼 (pīn) ===== */
     { cn:'拼图', py:'pīn tú', ru:'собирать пазл', c:'c1', img:'IMG_8668.png' },
     { cn:'拼积木', py:'pīn jīmù', ru:'собирать из кубиков', c:'c2', img:'IMG_8669.png' },
     { cn:'拼模型', py:'pīn móxíng', ru:'собирать модель', c:'c3', img:'IMG_8670.png' },
@@ -466,8 +460,6 @@ const wordsTopic2 = [
     { cn:'拼起来', py:'pīn qǐlái', ru:'соединить вместе', c:'c14', img:'IMG_8681.png' },
     { cn:'拼完整', py:'pīn wánzhěng', ru:'собрать полностью', c:'c15', img:'IMG_8682.png' },
     { cn:'拼好', py:'pīn hǎo', ru:'собрать до конца', c:'c16', img:'IMG_8683.png' },
-    /* ===== ТЕМА 6: 看 (kàn) ===== */
-
     { cn:'看手机', py:'kàn shǒujī', ru:'смотреть в телефон', c:'c1', img:'IMG_8695.png' },
     { cn:'看书', py:'kàn shū', ru:'читать книгу', c:'c2', img:'IMG_8696.png' },
     { cn:'看电视', py:'kàn diànshì', ru:'смотреть телевизор', c:'c3', img:'IMG_8697.png' },
@@ -486,10 +478,7 @@ const wordsTopic2 = [
     { cn:'看窗外', py:'kàn chuāngwài', ru:'смотреть в окно', c:'c16', img:'IMG_8714.png' }
 ];
 
-
-
-
-/* ===== ТЕМА 3: ГОТОВКА (IMG_8591 → IMG_8607) ===== */
+/* ===== ТЕМА 3: ГОТОВКА ===== */
 const wordsCooking = [
     { cn:'做早饭', py:'zuò zǎofàn', ru:'готовить завтрак', c:'c1', img:'IMG_8591.png' },
     { cn:'摆桌子', py:'bǎi zhuōzi', ru:'накрывать на стол', c:'c2', img:'IMG_8592.png' },
@@ -509,8 +498,6 @@ const wordsCooking = [
     { cn:'洗碗', py:'xǐ wǎn', ru:'мыть посуду', c:'c16', img:'IMG_8607.png' }
 ];
 
-
-
 const topics = [
     { words: wordsTopic1 },
     { words: wordsTopic2 },
@@ -524,34 +511,83 @@ let currentPage = 0;
 let currentWords = [...topics[0].words];
 let totalPages = Math.ceil(currentWords.length / cardsPerPage);
 
+/* ===== ГОЛОСА ===== */
+let voices = [];
+function loadVoices() {
+    voices = speechSynthesis.getVoices();
+}
+loadVoices();
+if ('speechSynthesis' in window) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function pickVoice(lang) {
+    if (!voices.length) voices = speechSynthesis.getVoices();
+    return voices.find(v => v.lang === lang)
+        || voices.find(v => v.lang.replace('_','-') === lang)
+        || voices.find(v => v.lang.startsWith(lang.split('-')[0]))
+        || null;
+}
+
+/* ===== РАЗБЛОКИРОВКА ЗВУКА НА iOS ===== */
+let audioUnlocked = false;
+document.body.addEventListener('click', () => {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+    try {
+        const u = new SpeechSynthesisUtterance(' ');
+        u.volume = 0;
+        speechSynthesis.speak(u);
+    } catch(e) {}
+}, { once: true });
+
+/* ===== ОЗВУЧКА С ЗАДЕРЖКОЙ ===== */
+function speak(text, lang, cb) {
+    if (!('speechSynthesis' in window)) { cb && cb(); return; }
+    speechSynthesis.cancel();
+
+    setTimeout(() => {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang;
+        u.rate = 0.9;
+        u.pitch = 1.0;
+        u.volume = 1.0;
+        const v = pickVoice(lang);
+        if (v) u.voice = v;
+        u.onend = () => cb && cb();
+        u.onerror = () => cb && cb();
+        speechSynthesis.speak(u);
+    }, 300);
+}
+
 function switchTopic(topicIndex) {
     currentTopic = topicIndex;
     currentWords = [...topics[topicIndex].words];
     currentPage = 0;
     totalPages = Math.ceil(currentWords.length / cardsPerPage);
-    
+
     document.querySelectorAll('.topic-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === topicIndex);
     });
-    
+
     render();
 }
 
 function render() {
     const grid = document.getElementById('grid');
     grid.innerHTML = '';
-    
+
     const start = currentPage * cardsPerPage;
     const end = start + cardsPerPage;
     const pageWords = currentWords.slice(start, end);
-    
+
     pageWords.forEach((word, index) => {
         const globalIndex = start + index;
         const card = document.createElement('div');
         card.className = `card ${word.c}`;
         card.id = `card-${index}`;
         card.onclick = () => speakCard(globalIndex);
-        
+
         card.innerHTML = `
             <img src="${imgPath}${word.img}" class="card-img" alt="${word.cn}" onerror="this.style.display='none'">
             <div class="text-block">
@@ -561,10 +597,10 @@ function render() {
                 <div class="russian">${word.ru}</div>
             </div>
         `;
-        
+
         grid.appendChild(card);
     });
-    
+
     updatePagination();
 }
 
@@ -583,52 +619,44 @@ function changePage(direction) {
     }
 }
 
-function speak(text, lang) {
-    if ('speechSynthesis' in window) {
-        speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.rate = 0.85;
-        utterance.pitch = 1.05;
-        speechSynthesis.speak(utterance);
-    }
-}
-
 function speakCard(index) {
     const word = currentWords[index];
     const cardIndex = index - currentPage * cardsPerPage;
     const card = document.getElementById(`card-${cardIndex}`);
-    
+
     document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
     if (card) {
         card.classList.add('playing');
-        setTimeout(() => card.classList.remove('playing'), 1500);
+        setTimeout(() => card.classList.remove('playing'), 2500);
     }
-    
-    speak(word.cn, 'zh-CN');
-    setTimeout(() => speak(word.ru, 'ru-RU'), 1100);
+
+    speak(word.cn, 'zh-CN', () => {
+        speak(word.ru, 'ru-RU');
+    });
 }
 
 function speakCurrentPage(lang) {
     speechSynthesis.cancel();
     const start = currentPage * cardsPerPage;
     const end = Math.min(start + cardsPerPage, currentWords.length);
-    let delay = 0;
-    
-    for (let i = start; i < end; i++) {
+    let i = start;
+
+    function next() {
+        if (i >= end) return;
         const cardIndex = i - start;
-        setTimeout(() => {
-            const card = document.getElementById(`card-${cardIndex}`);
-            if (card) {
-                document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
-                card.classList.add('playing');
-                setTimeout(() => card.classList.remove('playing'), 1200);
-            }
-            const word = currentWords[i];
-            speak(lang === 'cn' ? word.cn : word.ru, lang === 'cn' ? 'zh-CN' : 'ru-RU');
-        }, delay);
-        delay += 1800;
+        const card = document.getElementById(`card-${cardIndex}`);
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
+        if (card) {
+            card.classList.add('playing');
+            setTimeout(() => card.classList.remove('playing'), 1600);
+        }
+        const word = currentWords[i];
+        i++;
+        const text = lang === 'cn' ? word.cn : word.ru;
+        const voiceLang = lang === 'cn' ? 'zh-CN' : 'ru-RU';
+        speak(text, voiceLang, () => setTimeout(next, 350));
     }
+    next();
 }
 
 function shuffle() {
