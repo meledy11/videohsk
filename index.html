@@ -541,7 +541,7 @@ document.body.addEventListener('click', () => {
     } catch(e) {}
 }, { once: true });
 
-/* ===== ОЗВУЧКА С ЗАДЕРЖКОЙ ===== */
+/* ===== ОЗВУЧКА С ЗАДЕРЖКОЙ + ЗАЩИТА ОТ ДВОЙНОГО onend ===== */
 function speak(text, lang, cb) {
     if (!('speechSynthesis' in window)) { cb && cb(); return; }
     speechSynthesis.cancel();
@@ -554,8 +554,16 @@ function speak(text, lang, cb) {
         u.volume = 1.0;
         const v = pickVoice(lang);
         if (v) u.voice = v;
-        u.onend = () => cb && cb();
-        u.onerror = () => cb && cb();
+
+        let finished = false;
+        const done = () => {
+            if (finished) return;
+            finished = true;
+            cb && cb();
+        };
+        u.onend = done;
+        u.onerror = done;
+
         speechSynthesis.speak(u);
     }, 300);
 }
@@ -619,7 +627,13 @@ function changePage(direction) {
     }
 }
 
+/* ===== КАРТОЧКА: защита от двойного клика ===== */
+let isSpeakingCard = false;
+
 function speakCard(index) {
+    if (isSpeakingCard) return;
+    isSpeakingCard = true;
+
     const word = currentWords[index];
     const cardIndex = index - currentPage * cardsPerPage;
     const card = document.getElementById(`card-${cardIndex}`);
@@ -631,18 +645,26 @@ function speakCard(index) {
     }
 
     speak(word.cn, 'zh-CN', () => {
-        speak(word.ru, 'ru-RU');
+        speak(word.ru, 'ru-RU', () => {
+            isSpeakingCard = false;
+        });
     });
 }
 
+/* ===== ВЕСЬ ЭКРАН: защита от повторного запуска ===== */
+let isSpeakingPage = false;
+
 function speakCurrentPage(lang) {
+    if (isSpeakingPage) return;
+    isSpeakingPage = true;
     speechSynthesis.cancel();
+
     const start = currentPage * cardsPerPage;
     const end = Math.min(start + cardsPerPage, currentWords.length);
     let i = start;
 
     function next() {
-        if (i >= end) return;
+        if (i >= end) { isSpeakingPage = false; return; }
         const cardIndex = i - start;
         const card = document.getElementById(`card-${cardIndex}`);
         document.querySelectorAll('.card').forEach(c => c.classList.remove('playing'));
